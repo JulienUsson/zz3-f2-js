@@ -1,0 +1,11 @@
+{
+  "name": "zz3-f2-js",
+  "private": true,
+  "scripts": {
+    "slides:dev": "pnpm --filter slides dev",
+    "slides:build": "pnpm --filter slides build"
+  },
+  "author": "Julien Usson",
+  "license": "GPL-3.0-only",
+  "packageManager": "pnpm@10.19.0"
+}
