@@ -2,6 +2,7 @@
   "name": "zz3-f2-js",
   "private": true,
   "scripts": {
+    "build": "node build.js",
     "slides:dev": "pnpm --filter slides dev",
     "slides:build": "pnpm --filter slides build"
   },
