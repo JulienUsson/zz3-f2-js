@@ -29,3 +29,6 @@ devenv.local.nix
 
 # direnv
 .direnv
+
+# Astro
+.astro/

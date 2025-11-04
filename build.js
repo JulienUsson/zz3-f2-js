@@ -16,6 +16,21 @@ try {
   console.log("ℹ dist folder does not exist");
 }
 
+try {
+  const command = `pnpm home:build --outDir ../dist`;
+
+  console.log(`   Command: ${command}`);
+  execSync(command, {
+    stdio: "inherit",
+    cwd: __dirname,
+  });
+
+  console.log(`✓ home built successfully`);
+} catch (error) {
+  console.error(`❌ Error building home:`, error.message);
+  process.exit(1);
+}
+
 readdir(join(__dirname, "slides/src"), (err, files) => {
   if (err) {
     console.error("Error reading slides/src folder:", err);
@@ -55,6 +70,6 @@ readdir(join(__dirname, "slides/src"), (err, files) => {
       process.exit(1);
     }
   });
-
-  console.log("\n🎉 Build completed successfully!");
 });
+
+console.log("\n🎉 Build completed successfully!");

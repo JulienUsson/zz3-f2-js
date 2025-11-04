@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "build": "node build.js",
+    "home:dev": "pnpm --filter home dev",
+    "home:build": "pnpm --filter home build",
     "slides:dev": "pnpm --filter slides dev",
     "slides:build": "pnpm --filter slides build"
   },
