@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "build": "node build.js",
-    "home:dev": "pnpm --filter home dev",
-    "home:build": "pnpm --filter home build",
+    "practices:dev": "pnpm --filter practices dev",
+    "practices:build": "pnpm --filter practices build",
     "slides:dev": "pnpm --filter slides dev",
+    "slides:export": "pnpm --filter slides export",
     "slides:build": "pnpm --filter slides build"
   },
   "author": "Julien Usson",
