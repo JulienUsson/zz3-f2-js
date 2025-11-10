@@ -17,7 +17,7 @@ try {
 }
 
 try {
-  const command = `pnpm home:build --outDir ../dist`;
+  const command = `pnpm practices:build --outDir ../dist`;
 
   console.log(`   Command: ${command}`);
   execSync(command, {
@@ -25,9 +25,9 @@ try {
     cwd: __dirname,
   });
 
-  console.log(`✓ home built successfully`);
+  console.log(`✓ practices built successfully`);
 } catch (error) {
-  console.error(`❌ Error building home:`, error.message);
+  console.error(`❌ Error building practices:`, error.message);
   process.exit(1);
 }
 
