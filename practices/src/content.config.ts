@@ -6,6 +6,7 @@ const practices = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      slides: z.string().optional(),
     }),
 });
 

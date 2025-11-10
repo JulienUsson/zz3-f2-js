@@ -39,9 +39,14 @@ const practices = (await getCollection("practices")).sort((a, b) =>
         {
           practices.map((practice) => (
             <li>
-              <a href={`/practices/${practice.id}/`}>
-                <h4 class="title">{practice.data.title}</h4>
-              </a>
+              {practice.data.slides && (
+                <img src={`/preview/${practice.data.slides}/1.png`} />
+              )}
+              <h4 class="title">{practice.data.title}</h4>
+              {practice.data.slides && (
+                <a href={`/${practice.data.slides}/`}>Cours</a>
+              )}
+              <a href={`/practices/${practice.id}/`}>TP</a>
             </li>
           ))
         }

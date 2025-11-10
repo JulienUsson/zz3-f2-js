@@ -9,9 +9,9 @@ build:
 
 export-preview:
   #!/usr/bin/env bash
-  rm -rf ./practices/src/assets/*
+  rm -rf ./practices/public/preview/*
   for SLIDE in slides/src/*; do
     SLIDE_FILENAME=$(basename "$SLIDE");
     SLIDE_NAME=$(basename "$SLIDE" .md);
-    pnpm slides:export src/${SLIDE_FILENAME} --format png --range 1 --output ../practices/src/assets/${SLIDE_NAME}
+    pnpm slides:export src/${SLIDE_FILENAME} --format png --range 1 --output ../practices/public/preview/${SLIDE_NAME}
   done
