@@ -6,12 +6,12 @@ import Header from "../components/Header.astro";
 
 type Props = CollectionEntry<"practices">["data"];
 
-const { title, description } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="fr">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} />
     <style>
       main {
         width: calc(100% - 2em);
@@ -19,11 +19,12 @@ const { title, description } = Astro.props;
         margin: 0;
       }
       .prose {
-        width: 720px;
+        width: 1200px;
         max-width: calc(100% - 2em);
         margin: auto;
         padding: 1em;
         color: rgb(var(--gray-dark));
+        text-align: justify;
       }
       .title {
         text-align: center;

@@ -17,18 +17,21 @@ const practices = (await getCollection("practices")).sort((a, b) =>
     <style>
       ul {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
         gap: 2rem;
         list-style-type: none;
+        text-align: center;
         margin: 0;
         padding: 0;
       }
-      ul li {
-        width: calc(50% - 1rem);
+      ul li .title {
+        margin-bottom: 16px;
+        font-size: 2em;
       }
-      ul li * {
-        text-decoration: none;
-        transition: 0.2s ease;
+      ul li a {
+        color: inherit;
+        font-size: 1.6em;
       }
     </style>
   </head>
@@ -37,18 +40,25 @@ const practices = (await getCollection("practices")).sort((a, b) =>
     <main>
       <ul>
         {
-          practices.map((practice) => (
-            <li>
-              {practice.data.slides && (
-                <img src={`/preview/${practice.data.slides}/1.png`} />
-              )}
-              <h4 class="title">{practice.data.title}</h4>
-              {practice.data.slides && (
-                <a href={`/${practice.data.slides}/`}>Cours</a>
-              )}
-              <a href={`/practices/${practice.id}/`}>TP</a>
-            </li>
-          ))
+          practices
+            .sort(
+              (a, b) =>
+                a.data.order.valueOf() - b.data.order.valueOf() ||
+                a.data.title.localeCompare(b.data.title)
+            )
+            .map((practice) => (
+              <li>
+                <h2 class="title">{practice.data.title}</h2>
+                {practice.data.slides && (
+                  <a href={`/${practice.data.slides}/`}>
+                    <img src={`/preview/${practice.data.slides}/1.png`} />
+                  </a>
+                )}
+                {!practice.data.slidesOnly && (
+                  <a href={`/practices/${practice.id}/`}>Exercices</a>
+                )}
+              </li>
+            ))
         }
       </ul>
     </main>
