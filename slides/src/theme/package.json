@@ -1,0 +1,19 @@
+{
+  "name": "slidev-theme-javascript",
+  "version": "0.0.1",
+  "slidev": {
+    "defaults": {
+      "fonts": {
+        "mono": "Roboto Mono",
+        "sans": "Roboto",
+        "serif": "Pacifico",
+        "weights": "400, 700"
+      }
+    }
+  },
+  "dependencies": {
+    "@slidev/types": "^0.47.0",
+    "codemirror-theme-vars": "^0.1.2",
+    "prism-theme-vars": "^0.2.4"
+  }
+}
