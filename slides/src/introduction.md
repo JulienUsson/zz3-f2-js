@@ -29,8 +29,9 @@ Création d'une application web
 # Thèmes abordés
 
 - Javascript
-- NodeJS
+- Typescript
 - Développement web
+- NodeJS
 - ExpressJS
 - ReactJS
 
