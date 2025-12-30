@@ -31,7 +31,6 @@ const practices = (await getCollection("practices")).sort((a, b) =>
       }
       ul li a {
         color: inherit;
-        font-size: 1.6em;
       }
       ul li img {
         height: 200px;
@@ -53,12 +52,16 @@ const practices = (await getCollection("practices")).sort((a, b) =>
               <li>
                 <h2 class="title">{practice.data.title}</h2>
                 {practice.data.slides && (
-                  <a href={`/${practice.data.slides}/`}>
-                    <img src={`/preview/${practice.data.slides}/1.png`} />
-                  </a>
+                  <div>
+                    <a href={`/${practice.data.slides}/`}>
+                      <img src={`/preview/${practice.data.slides}/1.png`} />
+                    </a>
+                  </div>
                 )}
                 {!practice.data.slidesOnly && (
-                  <a href={`/practices/${practice.id}/`}>Exercices</a>
+                  <div>
+                    <a href={`/practices/${practice.id}/`}>Exercices</a>
+                  </div>
                 )}
               </li>
             ))

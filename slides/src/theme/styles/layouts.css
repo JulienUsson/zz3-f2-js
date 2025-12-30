@@ -45,10 +45,6 @@
   li {
     list-style: disc;
   }
-
-  .slidev-monaco-container {
-    width: 60vw;
-  }
 }
 
 
@@ -70,6 +66,10 @@
   img {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .slidev-monaco-container {
+    width: 60vw;
   }
 }
 
