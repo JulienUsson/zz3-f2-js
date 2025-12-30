@@ -5,7 +5,8 @@
   inputs,
   ...
 }: let
-  pkgs-playwright = import inputs.nixpkgs-playwright {system = pkgs.stdenv.system;};
+  pkgs-unstable = import inputs.nixpkgs-unstable {system = pkgs.stdenv.system; config.allowUnfree = true;};
+  pkgs-playwright = import inputs.nixpkgs-playwright {system = pkgs.stdenv.system; config.allowUnfree = true;};
   browsers = (builtins.fromJSON (builtins.readFile "${pkgs-playwright.playwright-driver}/browsers.json")).browsers;
   chromium-rev = (builtins.head (builtins.filter (x: x.name == "chromium") browsers)).revision;
 in {
@@ -21,7 +22,7 @@ in {
   packages = with pkgs; [
     alejandra
     git
-    vscode
+    pkgs-unstable.vscode
     zsh
   ];
 
