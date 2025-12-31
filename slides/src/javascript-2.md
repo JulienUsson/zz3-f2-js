@@ -126,12 +126,12 @@ console.log("Bar")
 ```
 
 ---
+monacoTypesSource: ata
+---
 
 # Transformer un callback en promesse
 
 ```javascript {monaco} {height:'auto'}
-import fs from "fs"
-
 function customPromiseReadFile(path) {
     return new Promise(function (resolve, reject) {
         fs.readFile(path, function (err, data) {
