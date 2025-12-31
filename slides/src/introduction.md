@@ -6,7 +6,7 @@ defaults:
   layout: center
 ---
 
-# Javascript
+# Introduction
 
 ---
 

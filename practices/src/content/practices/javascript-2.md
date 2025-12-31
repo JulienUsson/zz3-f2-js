@@ -5,6 +5,8 @@ slides: "javascript-2"
 
 Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
 
+---
+
 ## Exercice 1 : Comprendre les exceptions
 
 En utilisant la fonction suivante sans la modifier :
@@ -23,6 +25,8 @@ function russianRoulette() {
 russianRoulette();
 ```
 
+---
+
 ## Exercice 2 : Utiliser les promesses
 
 Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me/api/?results=100) avec [axios](https://github.com/axios/axios#example) et qui les affichent.
@@ -34,6 +38,8 @@ Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me
 
 ⚠️ N'oubliez pas d'ajouter la bibliothèque `Axios` avec le bouton `Add dependency` sur CodeSandbox ou via `npm install --save axios` en local.
 
+---
+
 ## Exercice 3 : Utiliser les promesses
 
 Ecrire un script qui récupère 100 users et qui affiche les users habitants en France. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
@@ -41,12 +47,16 @@ Ecrire un script qui récupère 100 users et qui affiche les users habitants en 
 - En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
 - En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
 
+---
+
 ## Exercice 4 : Utiliser les promesses
 
 Ecrire un script qui récupère 100 users et qui stocke dans un second tableau uniquement le prénom et le nom (`{firstname: "Julien", lastname: "Usson"}`)de tous les users dont le timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter), [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map) et [forEach()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach))
 
 - En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
 - En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
+
+---
 
 ## Exercice 5 : Transformer un callback en promesse
 
@@ -66,6 +76,8 @@ Créer une fonction wrappant setTimeout() dans une promesse puis écrire un prog
 - En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses) et votre nouvelle fonction
 - En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await) et votre nouvelle fonction
 
+---
+
 ## Exercice 6 : Gestion des erreurs
 
 Écrire un script qui récupère 100 users depuis l’API [randomuser](https://randomuser.me/api/?results=100).
@@ -81,6 +93,8 @@ Ajouter un finally qui affiche `Request finished`.
 
 ℹ️ Pour tester le cas d’erreur, vous pouvez volontairement casser l’URL de l’API.
 
+---
+
 ## Exercice 7 : Paralléliser des promesses avec Promise.all
 
 Écrire un script qui récupère en parallèle 50 users et 50 autres users puis fusionne les deux tableaux en un seul et affiche le nombre total d’utilisateurs.
@@ -88,6 +102,8 @@ Ajouter un finally qui affiche `Request finished`.
 - En utilisant [Promise.all](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 
 ⚠️ Vérifiez que les deux requêtes partent bien en même temps.
+
+---
 
 ## Exercice 8 : Créer une fonction retry avec promesse
 
@@ -104,6 +120,8 @@ retry(fetchUsers, 3)
 ```
 
 ℹ️ Pour tester le cas d’erreur, vous pouvez volontairement casser l’URL de l’API.
+
+---
 
 ## Autres ressources
 

@@ -6,7 +6,7 @@ defaults:
   layout: center
 ---
 
-# Javascript
+# Javascript 2
 Des promesses… pas toujours tenues
 
 ---

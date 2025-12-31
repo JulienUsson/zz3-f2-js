@@ -6,7 +6,7 @@ defaults:
   layout: center
 ---
 
-# Javascript
+# Javascript 1
 console.log("Hello World !")
 
 ---
@@ -27,7 +27,7 @@ console.log("Hello World !")
  * Simple à utiliser/apprendre
  * Plein de concepts sympas (fonctionnel, asynchrone)
  * Très populaire (Premier sur [Stackoverflow Survey 2025](https://survey.stackoverflow.co/2025/technology#most-popular-technologies))
-  <br/>=> Très grosse communauté (pleins de libs, tutos, etc...)
+  <br/>➡️ Très grosse communauté (pleins de libs, tutos, etc...)
 
 --- 
 
@@ -53,7 +53,7 @@ Comment on utilise les dernières versions de Javascript ?
  * Aujourd'hui [SWC](https://swc.rs/)
  * Permet de transformer un langage en un autre
  * Ne pas confondre avec un compilateur
- * ES2025 => ES6, plus de soucis de compatibilité !
+ * ES2025 ➡️ ES6, plus de soucis de compatibilité !
  * Les [polyfills](https://developer.mozilla.org/fr/docs/Glossary/Polyfill) permettent également une meilleure rétrocompatibilité
 
 ---

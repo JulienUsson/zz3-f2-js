@@ -5,6 +5,8 @@ slides: "javascript-1"
 
 Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
 
+---
+
 ## Exercice 1 :
 
 Ecrire un script qui additionne 42 à chaque élément du tableau.
@@ -19,6 +21,8 @@ const numbers = [20, 30, 42, 66, 99];
 - En utilisant [for of](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for...of)
 - En utilisant [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
+---
+
 ## Exercice 2 :
 
 Ecrire un script qui calcule la somme d'un tableau.
@@ -31,6 +35,8 @@ const numbers = [20, 30, 42, 66, 99];
 - En utilisant [for of](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for...of)
 - En utilisant [reduce()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
 
+---
+
 ## Exercice 3 :
 
 Ecrire un script qui affiche dans la console, toutes les valeurs du tableau.
@@ -42,6 +48,8 @@ const colors = ["blue", "red", "green", "yellow", "cyan"];
 
 - En utilisant [forEach()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
+---
+
 ## Exercice 4 :
 
 Ecrire un script qui récupère l'objet `{name: "Julien", age: 31}` du tableau.
@@ -49,7 +57,7 @@ Ecrire un script qui récupère l'objet `{name: "Julien", age: 31}` du tableau.
 ```javascript
 const users = [
   { name: "Julien", age: 31 },
-  { name: "Louise", age: 27 },
+  { name: "Louise", age: 28 },
   { name: "Bastien", age: 22 },
   { name: "Raphaël", age: 28 },
   { name: "Alexandre", age: 42 },
@@ -59,6 +67,8 @@ const users = [
 ```
 
 - En utilisant [find()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+---
 
 ## Exercice 5 :
 
@@ -78,6 +88,8 @@ const users = [
 
 - En utilisant [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
+---
+
 ## Exercice 6
 
 Écrire un script qui retourne un tableau contenant uniquement les prénoms des utilisateurs.
@@ -92,6 +104,8 @@ const users = [
 ```
 
 - En utilisant [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+---
 
 ## Exercice 7
 
@@ -108,6 +122,8 @@ const users = [
 
 - En utilisant [some()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 
+---
+
 ## Exercice 8
 
 Écrire un script qui vérifie si **toutes les personnes** sont majeures.
@@ -122,6 +138,8 @@ const users = [
 ```
 
 - En utilisant [every()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+
+---
 
 ## Exercice 9
 
@@ -144,6 +162,8 @@ const users = [
 - En utilisant [sort()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 - En utilisant [toSorted()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
 - En ordre décroissant
+
+---
 
 ## Exercice 10
 

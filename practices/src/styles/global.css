@@ -147,7 +147,13 @@ hr {
 }
 
 .practice h2 {
+	margin-top: 32px;
 	font-size: 1.563em;
+}
+
+.practice h3 { 
+	font-size: 1.25em;
+	color: rgb(var(--gray-dark));
 }
 
 .practice p {
@@ -160,4 +166,9 @@ hr {
 
 .practice p + ul {
 	margin-top: 0;
+}
+
+.practice span.help {
+  border-bottom: 1px dotted rgb(var(--gray-dark));
+  cursor: help;
 }
