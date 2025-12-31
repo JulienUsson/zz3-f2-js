@@ -22,7 +22,11 @@ defaults:
 
 Création d'une application web
 
-<img alt="Strange World" src="./assets/strange-world.png" width="200px" />
+<a href="https://www.philibertnet.com/fr/grrre-games/141186-strange-world-above-the-clouds-3760290560505.html" target="_blank">
+  <img alt="Strange World" src="./assets/strange-world.png" width="200px" />
+</a>
+
+[règles](/regles-strange-world.pdf)
 
 ---
 
