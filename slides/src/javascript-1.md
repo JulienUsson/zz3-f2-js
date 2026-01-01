@@ -167,6 +167,39 @@ console.log(add5(1, 2))
 
 ---
 
+# Les closures
+
+Une **closure** est une fonction qui :
+
+* Est définie dans une autre fonction
+* Se souvient de son **scope lexical**, même après exécution
+
+➡️ En JavaScript, **les fonctions capturent leur environnement**.
+
+---
+
+# Exemple simple de closure
+
+```javascript {monaco-run} {height:'auto'}
+function counter() {
+  let count = 0
+
+  return function () {
+    count++
+    return count
+  }
+}
+
+const increment = counter()
+console.log(increment())
+console.log(increment())
+```
+
+* `count` n’est plus accessible directement
+* Mais il est **retenu en mémoire**
+
+---
+
 # Les tableaux
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
