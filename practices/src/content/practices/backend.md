@@ -1,5 +1,5 @@
 ---
-title: "Backend (Node et Express)"
+title: "Backend"
 slides: "backend"
 slidesOnly: true
 order: 60

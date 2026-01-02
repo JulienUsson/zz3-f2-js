@@ -16,14 +16,18 @@ const practices = (await getCollection("practices")).sort((a, b) =>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
       ul {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 2rem;
         list-style-type: none;
         text-align: center;
         margin: 0;
         padding: 0;
+      }
+      ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       ul li .title {
         margin-bottom: 16px;
@@ -31,9 +35,12 @@ const practices = (await getCollection("practices")).sort((a, b) =>
       }
       ul li a {
         color: inherit;
+        display: block;
       }
       ul li img {
+        width: 100%;
         height: 200px;
+        object-fit: cover;
       }
     </style>
   </head>
@@ -51,16 +58,24 @@ const practices = (await getCollection("practices")).sort((a, b) =>
             .map((practice) => (
               <li>
                 <h2 class="title">{practice.data.title}</h2>
-                {practice.data.slides && (
+                {practice.data.slides ? (
+                  <>
+                    <div>
+                      <a href={`/${practice.data.slides}/`}>
+                        <img src={`/preview/${practice.data.slides}/1.png`} />
+                      </a>
+                    </div>
+                    {!practice.data.slidesOnly && (
+                      <div>
+                        <a href={`/practices/${practice.id}/`}>Exercices</a>
+                      </div>
+                    )}
+                  </>
+                ) : (
                   <div>
-                    <a href={`/${practice.data.slides}/`}>
-                      <img src={`/preview/${practice.data.slides}/1.png`} />
+                    <a href={`/practices/${practice.id}/`}>
+                      <img src={practice.data.image} />
                     </a>
-                  </div>
-                )}
-                {!practice.data.slidesOnly && (
-                  <div>
-                    <a href={`/practices/${practice.id}/`}>Exercices</a>
                   </div>
                 )}
               </li>

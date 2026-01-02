@@ -1,5 +1,5 @@
 ---
-title: "Les frameworks Frontend"
+title: "Frontend"
 slides: "frontend"
 slidesOnly: true
 order: 110

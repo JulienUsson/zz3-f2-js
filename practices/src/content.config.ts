@@ -9,6 +9,7 @@ const practices = defineCollection({
       slides: z.string().optional(),
       slidesOnly: z.boolean().optional().default(false),
       order: z.number().optional().default(1),
+      image: z.string().optional(),
     }),
 });
 
