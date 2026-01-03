@@ -22,11 +22,9 @@ defaults:
 
 Création d'une application web
 
-<a href="https://www.philibertnet.com/fr/grrre-games/141186-strange-world-above-the-clouds-3760290560505.html" target="_blank">
-  <img alt="Strange World" src="./assets/strange-world.png" width="200px" />
+<a href="https://www.philibertnet.com/fr/cocktail-games/145704-jungo-3760052143939.html" target="_blank">
+  <img alt="Jungo" src="./assets/jungo.png" width="200px" />
 </a>
-
-[règles](/regles-strange-world.pdf)
 
 ---
 
@@ -34,7 +32,6 @@ Création d'une application web
 
 - Javascript
 - Typescript
-- Développement web
 - NodeJS
 - ExpressJS
 - ReactJS
