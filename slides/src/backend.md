@@ -124,8 +124,8 @@ Mais c'est quoi une application web ?
 # Une application web 
 
  * Ca répond à des requêtes HTTP
- * C'est accessible via internet (pas toujours => intranet)
- * C'est utilisable avec un navigateur (pas toujours => API)
+ * C'est accessible via internet (pas toujours ➡️ intranet)
+ * C'est utilisable avec un navigateur (pas toujours ➡️ API)
 
 ---
  
