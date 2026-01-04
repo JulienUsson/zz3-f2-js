@@ -68,6 +68,21 @@ Dès qu’un joueur n’a plus de cartes, il gagne
 
 ---
 
+## Exemple d'api REST
+
+- GET /game/state - Récupérer l'état actuel de la partie
+- GET /players/{id}/hand - Récupérer la main d'un joueur
+- POST /players/{id}/play - Jouer une combinaison de cartes
+- POST /players/{id}/draw - Piocher une carte
+
+---
+
+## Exemple d'interface utilisateur
+
+![Jungo frontend](./assets/jungo-frontend.png)
+
+---
+
 ## Démarrer un projet Express TypeScript
 
 - Exécuter les commandes suivantes dans un terminal :
@@ -135,8 +150,28 @@ npm run dev
 ```bash
 npm create vite@latest jungo-frontend -- --template react-ts
 cd jungo-frontend
-npm install
+npm i @tanstack/react-query
 npm run dev
+```
+
+- Modifier le fichier `/src/App.tsx` comme suit :
+
+```tsx
+...
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+function App() {
+  ...
+  return (
+    <QueryClientProvider client={queryClient}>
+      ...
+    </QueryClientProvider>
+  );
+}
+
+...
 ```
 
 - Ouvrir [http://localhost:5173](http://localhost:5173) dans un navigateur web.
