@@ -12,8 +12,8 @@ defaults:
 
 # Présentation du cours
 
-- Séance 1 à 5 => 1h de cours, 1h de TP indépendant
-- Séance 6 à 10 => cours et TP fil rouge entremêlés
+- Séance 1 à 5 => ~1h de cours, ~1h de TP indépendant
+- Séance 6 à 10 => ~1h de cours, ~1h de TP fil rouge
 - ⚠️ **Prenez des notes !**
 
 ---
@@ -32,9 +32,9 @@ Création d'une application web
 
 - Javascript
 - Typescript
-- NodeJS
-- ExpressJS
-- ReactJS
+- Node.js
+- Express
+- React
 
 A rajouter dans votre CV 😉
 

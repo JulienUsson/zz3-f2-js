@@ -45,6 +45,10 @@
   li {
     list-style: disc;
   }
+
+  th {
+    font-weight: 600;
+  }
 }
 
 
@@ -52,6 +56,10 @@
   h1 {
     text-align: center;
     margin-bottom: 32px;
+  }
+
+  h1:nth-of-type(n+2) {
+    margin-top: 16px;
   }
 
   p {
