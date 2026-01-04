@@ -21,10 +21,8 @@ defaults:
 # TP fil rouge
 
 Création d'une application web
-
-<a href="https://www.philibertnet.com/fr/cocktail-games/145704-jungo-3760052143939.html" target="_blank">
-  <img alt="Jungo" src="./assets/jungo.png" width="200px" />
-</a>
+ 
+<img alt="Pizzima" src="./assets/pizzima.png" width="200px" />
 
 ---
 

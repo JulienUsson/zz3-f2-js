@@ -423,49 +423,70 @@ function App() {
 
 ---
 
-# TanStack Query
 
-Dans une vraie application React, on a souvent besoin de :
+# Effets de bord (side effects)
 
-* récupérer des données depuis une API
-* gérer le chargement
-* gérer les erreurs
-* éviter de recharger inutilement les données
+Un **effet de bord**, c’est une action qui :
 
-C’est là qu’intervient **TanStack Query**
+* touche l’extérieur du composant
+* n’est pas directement liée au rendu
+
+Exemples :
+* appel API (`fetch`)
+* accès au DOM
+* timer (`setInterval`, `setTimeout`)
+
+➡️ React isole ça avec `useEffect`.
 
 ---
 
-# Utilisation de TanStack Query
+# Problème
 
 ```jsx
 function App() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["todos"],
-    queryFn: () => fetch("/api/todos").then(res => res.json())
-  })
-
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
-
-  return (
-    <ul>
-      {data.map(todo => (
-        <li key={todo.id}>{todo.text}</li>
-      ))}
-    </ul>
-  )
+  fetch("/api/data").then(() => {})
+  return <p>Hello</p>
 }
 ```
+
+* ❌ Appelé à **chaque render**
+* ❌ Bugs
+* ❌ Requêtes en boucle
+
+---
+
+# useEffect au montage
+
+```jsx
+useEffect(() => {
+  console.log("Composant monté")
+}, [])
+```
+
+* tableau vide
+* exécuté **une seule fois**
+
+---
+
+# useEffect avec dépendances
+
+```jsx
+useEffect(() => {
+  console.log("count a changé", count)
+}, [count])
+```
+
+* déclenché quand `count` change
+* React compare les dépendances (shallow)
 
 ---
 
 # Les autres concepts dont on ne parlera pas
 
 * Component lifecycle
-* useEffect
 * Context
 * Memoization
+* Server components
 * ...
 
 ➡️ Avec ces bases, vous pouvez déjà créer **de vraies applications** 🚀
