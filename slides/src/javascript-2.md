@@ -153,8 +153,8 @@ function customPromiseReadFile(path) {
 async function getPostsPromise() {
   // On ne peut utiliser le mot-clé await que dans une fonction async
   try {
-    const user = await fetchUser()
-       const posts = await fetchUserPosts(user)
+    let user = await fetchUser()
+       let posts = await fetchUserPosts(user)
        return posts
     } catch(e) {
         console.error(e)

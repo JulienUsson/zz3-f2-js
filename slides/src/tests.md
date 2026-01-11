@@ -64,7 +64,7 @@ describe("add", () => {
 ```javascript
 describe("find all cars", () => {
     test("should respond with a 200", async () => {
-        const response = await request(app).get("/cars")
+        let response = await request(app).get("/cars")
         expect(response.statusCode).toBe(200)
         expect(response.body).toEqual([{...}, {...}])
     })

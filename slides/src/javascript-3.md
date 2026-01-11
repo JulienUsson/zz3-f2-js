@@ -36,7 +36,7 @@ function User(name, age) {
   this.age = age
 }
 
-const user1 = new User("Alice", 25)
+let user1 = new User("Alice", 25)
 console.log(user1.name)
 ```
 
@@ -57,7 +57,7 @@ function User(name, age) {
   }
 }
 
-const user1 = new User("Alice", 25)
+let user1 = new User("Alice", 25)
 user1.sayHello()
 ```
 
@@ -80,7 +80,7 @@ User.prototype.sayHello = function () {
   console.log("Hello " + this.name)
 }
 
-const user1 = new User("Alice", 25)
+let user1 = new User("Alice", 25)
 user1.sayHello()
 ```
 
@@ -92,7 +92,7 @@ user1.sayHello()
 # Comment ça marche ?
 
 ```javascript
-const user = new User("Bob", 30)
+let user = new User("Bob", 30)
 
 user.sayHello()
 ```
@@ -124,7 +124,7 @@ Admin.prototype.deleteUser = function () {
   console.log("User deleted")
 }
 
-const admin = new Admin("Louise", 28)
+let admin = new Admin("Louise", 28)
 admin.sayHello()
 admin.deleteUser()
 ```
@@ -151,7 +151,7 @@ class User {
   }
 }
 
-const user = new User("Alice", 25)
+let user = new User("Alice", 25)
 user.sayHello()
 ```
 
@@ -196,7 +196,7 @@ class Admin extends User {
   }
 }
 
-const admin = new Admin("Louise", 28)
+let admin = new Admin("Louise", 28)
 admin.sayHello()
 admin.deleteUser()
 ```
@@ -242,7 +242,7 @@ class User {
   }
 }
 
-const user = new User("Alice")
+let user = new User("Alice")
 user.name = "Bob"
 console.log(user.name)
 ```
@@ -264,7 +264,7 @@ class BankAccount {
   }
 }
 
-const account = new BankAccount()
+let account = new BankAccount()
 account.deposit(100)
 account.showBalance()
 // console.log(account.#balance)

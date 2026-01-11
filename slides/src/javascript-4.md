@@ -32,7 +32,7 @@ greet("Alice")
 Nom inspiré de `?:` dans d’autres langages
 
 ```javascript {monaco-run} {height:'auto'}
-const user = { name: "Alice", address: { city: "Paris" } }
+let user = { name: "Alice", address: { city: "Paris" } }
 console.log(user.address?.city)
 console.log(user.contact?.phone)
 ```
@@ -44,9 +44,9 @@ console.log(user.contact?.phone)
 Valeur par défaut **si la valeur est null ou undefined**
 
 ```javascript {monaco-run} {height:'auto'}
-const foo = null ?? "default"
+let foo = null ?? "default"
 console.log(foo)
-const bar = 0 ?? 42
+let bar = 0 ?? 42
 console.log(bar)
 ```
 
@@ -55,8 +55,8 @@ console.log(bar)
 # Optional chaining + Nullish coalescing
 
 ```javascript {monaco-run} {height:'auto'}
-const user = { name: "Alice", address: null }
-const city = user.address?.city ?? "Unknown"
+let user = { name: "Alice", address: null }
+let city = user.address?.city ?? "Unknown"
 console.log(city)
 ```
 
@@ -77,12 +77,12 @@ console.log(theme)
 # Destructuring
 
 ```javascript {monaco-run} {height:'auto'}
-const user = { firstname: "Alice", lastname: "Smith", age: 25 }
-const { age, ...name } = user
+let user = { firstname: "Alice", lastname: "Smith", age: 25 }
+let { age, ...name } = user
 console.log(age, JSON.stringify(name))
 
-const numbers = [1,2,3,4,5]
-const [one, ...rest] = numbers
+let numbers = [1,2,3,4,5]
+let [one, ...rest] = numbers
 console.log(one, rest)
 ```
 
@@ -91,8 +91,8 @@ console.log(one, rest)
 # Array spread operator
 
 ```javascript {monaco-run} {height:'auto'}
-const arr1 = [2, 3]
-const arr2 = [1, ...arr1, 4]
+let arr1 = [2, 3]
+let arr2 = [1, ...arr1, 4]
 console.log(arr2)
 ```
 
@@ -101,15 +101,15 @@ console.log(arr2)
 # Object spread operator
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const obj1 = { a: 1, b: 2 }
-const obj2 = { ...obj1, b: 1, c: 3 }
+let obj1 = { a: 1, b: 2 }
+let obj2 = { ...obj1, b: 1, c: 3 }
 console.log(JSON.stringify(obj2))
 ```
 
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const obj1 = { a: 1, b: 2 }
-const obj2 = {  b:2, c: 3, ...obj1 }
+let obj1 = { a: 1, b: 2 }
+let obj2 = {  b:2, c: 3, ...obj1 }
 console.log(JSON.stringify(obj2))
 ```
 
@@ -129,10 +129,10 @@ console.log(sum(1, 2, 3, 4))
 # Template strings
 
 ```javascript {monaco-run} {height:'auto'}
-const name = "Alice"
-const age = 25
+let name = "Alice"
+let age = 25
 
-const sentence = `My name is ${name}
+let sentence = `My name is ${name}
 and I am ${age} years old`
 
 console.log(sentence)
@@ -160,9 +160,9 @@ Un objet **immutable** ne change jamais.
 # Exemple mutable
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const user1 = { name: "Alice" }
+let user1 = { name: "Alice" }
 
-const user2 = user1
+let user2 = user1
 user2.name = "Bob"
 
 console.log(JSON.stringify(user1))
@@ -175,9 +175,9 @@ console.log(user1 === user2)
 # Exemple immutable
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const user = { name: "Alice" }
+let user = { name: "Alice" }
 
-const updatedUser = {
+let updatedUser = {
   ...user,
   name: "Bob"
 }
@@ -192,8 +192,8 @@ console.log(user === updatedUser)
 # Immutabilité avec les tableaux
 
 ```javascript {monaco-run} {height:'auto'}
-const numbers = [1, 2, 3]
-const newNumbers = [...numbers, 4]
+let numbers = [1, 2, 3]
+let newNumbers = [...numbers, 4]
 
 console.log(numbers)
 console.log(newNumbers)

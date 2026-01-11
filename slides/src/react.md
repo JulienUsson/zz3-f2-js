@@ -143,7 +143,7 @@ export default App
 Le JSX ressemble à du HTML mais **c’est du JavaScript**.
 
 ```jsx
-const name = "Julien"
+let name = "Julien"
 
 function App() {
   return <h1>Hello {name}</h1>
@@ -220,8 +220,8 @@ React compare principalement :
 * pas le contenu profond
 
 ```js
-const a = { name: "Alice" }
-const b = a
+let a = { name: "Alice" }
+let b = a
 
 a === b // true
 ```
@@ -255,7 +255,7 @@ user.name = "Bob"
 Immutabilité :
 
 ```js
-const newUser = { ...user, name: "Bob" }
+let newUser = { ...user, name: "Bob" }
 ```
 
 * nouvelle référence
@@ -336,7 +336,7 @@ Un composant peut avoir un **état interne**.
 import { useState } from "react"
 
 function Counter() {
-  const [count, setCount] = useState(0)
+  let [count, setCount] = useState(0)
 
   return (
     <div>
@@ -361,7 +361,7 @@ function Counter() {
 
 ```jsx
 function App() {
-  const [logged, setLogged] = useState(false)
+  let [logged, setLogged] = useState(false)
 
   return (
     <div>
@@ -377,7 +377,7 @@ function App() {
 # Listes et map
 
 ```jsx
-const todos = ["Apprendre React", "Faire une app", "Boire un café"]
+let todos = ["Apprendre React", "Faire une app", "Boire un café"]
 
 function App() {
   return (
@@ -396,8 +396,8 @@ function App() {
 
 ```jsx
 function App() {
-  const [todos, setTodos] = useState([])
-  const [value, setValue] = useState("")
+  let [todos, setTodos] = useState([])
+  let [value, setValue] = useState("")
 
   function addTodo() {
     if (!value) return

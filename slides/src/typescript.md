@@ -177,13 +177,13 @@ enum E {
 # Tableaux
 
 ```typescript {monaco} {height:'auto'}
-const scores: number[] = [10, 20, 30];
+let scores: number[] = [10, 20, 30];
 ```
 
 ou
 
 ```typescript {monaco} {height:'auto'}
-const scores: Array<number> = [10, 20, 30];
+let scores: Array<number> = [10, 20, 30];
 ```
 
 ---
@@ -191,7 +191,7 @@ const scores: Array<number> = [10, 20, 30];
 # Tuples
 
 ```ts
-const user: [string, number] = ["Julien", 31];
+let user: [string, number] = ["Julien", 31];
 ```
 
 ➡️ tableau à structure fixe
@@ -233,7 +233,7 @@ function add(a: number, b: number): number {
   return a + b;
 }
 
-const multiply = (a: number, b: number): number => {
+let multiply = (a: number, b: number): number => {
   return a * b;
 };
 
@@ -247,7 +247,7 @@ function greet(name?: string) {
 # Typage des objets
 
 ```typescript {monaco} {height:'auto'}
-const user: {
+let user: {
   firstname: string;
   age: number;
 } = {
@@ -266,7 +266,7 @@ interface User {
   age: number;
 }
 
-const user: User = {
+let user: User = {
   firstname: "Julien",
   age: 31,
 };

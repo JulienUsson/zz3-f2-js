@@ -81,7 +81,7 @@ Et ça ressemble à quoi ?
 
 ```javascript {monaco} {height:'auto'}
 // Déclarer une variable
-let var1 = "toto"
+let var1 = "toto";
 let var2 = 2
 let var3 = 3.5
 let var4 = null
@@ -95,6 +95,8 @@ const const1 = "titi"
 // const1 = "tata" /!\ IMPOSSIBLE
 ```
 ⚠️ Le mot-clé `var` a été déprécié.
+
+ℹ️ Les points-virgules sont facultatifs.
 
 ---
 
@@ -148,20 +150,20 @@ function add(val1, val2) {
 }
 console.log(add(1, 2))
 
-const add2 = function (val1, val2) {
+let add2 = function (val1, val2) {
     return val1 + val2
 }
 console.log(add2(1, 2))
 
-const add3 = (val1, val2) => {
+let add3 = (val1, val2) => {
     return val1 + val2
 }
 console.log(add3(1, 2))
 
-const add4 = (val1, val2) => val1 + val2
+let add4 = (val1, val2) => val1 + val2
 console.log(add4(1, 2))
 
-const add5 = add4
+let add5 = add4
 console.log(add5(1, 2))
 ```
 
@@ -190,7 +192,7 @@ function counter() {
   }
 }
 
-const increment = counter()
+let increment = counter()
 console.log(increment())
 console.log(increment())
 ```
@@ -203,7 +205,7 @@ console.log(increment())
 # Les tableaux
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const tableau = [1, 2, "toto", "tutu", 3.4]
+let tableau = [1, 2, "toto", "tutu", 3.4]
 console.log('tableau.length', tableau.length) 
 console.log('tableau[0]', tableau[0]) 
 console.log('tableau.at(-1)', tableau.at(-1)) 
@@ -225,11 +227,11 @@ console.log('[0, 1, 2] === [0, 1, 2]', [0, 1, 2] === [0, 1, 2])
 # Les objets
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const dictionnaire = {tutu: "toto", titi: 1, toto: "tutu"}
-console.log(dictionnaire.tutu)
+let key = "toto"
+let dictionnaire = {tutu: "toto", titi: 1, [key]: "tutu", key}
+console.log(JSON.stringify(dictionnaire))
 console.log(dictionnaire.titi)
-console.log(dictionnaire["tutu"])
-console.log(dictionnaire["tu" + "tu"])
+console.log(dictionnaire[key])
 
 console.log(Object.keys(dictionnaire));
 console.log(Object.values(dictionnaire));
@@ -244,16 +246,16 @@ console.log('{tutu: "toto"} === {tutu: "toto"}', {tutu: "toto"} === {tutu: "toto
 # Les collections
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-const collection = [ {toto: 3, tutu: 2}, {toto: 5, tutu: 2}, {toto: 7, tutu: 1}]
+let collection = [ {toto: 3, tutu: 2}, {toto: 5, tutu: 2}, {toto: 7, tutu: 1}]
 console.log(collection[0].toto)
 console.log(collection[0]["toto"])
 
-const users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
 
-const uppercaseUsers = users.map(user => user.name.toUpperCase())
+let uppercaseUsers = users.map(user => user.name.toUpperCase())
 console.log(JSON.stringify(uppercaseUsers))
-const majorUsers = users.filter(user => user.age >= 18)
+let majorUsers = users.filter(user => user.age >= 18)
 console.log(JSON.stringify(majorUsers))
-const toto = users.find(user => user.name === "toto")
+let toto = users.find(user => user.name === "toto")
 console.log(JSON.stringify(toto))
 ```

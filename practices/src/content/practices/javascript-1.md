@@ -3,7 +3,7 @@ title: "Javascript 1"
 slides: "javascript-1"
 ---
 
-Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla), un environnement en ligne pour coder et exécuter du Javascript.
+Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla) (fonctionne mieux avec Chrome/Chromium) (fonctionne mieux avec Chrome/Chromium), un environnement en ligne pour coder et exécuter du Javascript.
 
 ---
 
@@ -76,14 +76,14 @@ Ecrire un script qui récupère les personnes ayant moins de 26ans du tableau.
 
 ```javascript
 const users = [
-  { name: "Julien", age: 31 },
+  { name: "Julien", age: 26 },
   { name: "Louise", age: 24 },
   { name: "Bastien", age: 22 },
   { name: "Raphaël", age: 28 },
   { name: "Alexandre", age: 42 },
-  { name: "Julien", age: 55 },
+  { name: "Julien", age: 31 },
 ];
-// Résultat attendu : [{name: "Julien", age: 31}, {name: "Louise", age: 24}, {name: "Bastien", age: 22}]
+// Résultat attendu : [{name: "Julien", age: 26}, {name: "Louise", age: 24}, {name: "Bastien", age: 22}]
 ```
 
 - En utilisant [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
