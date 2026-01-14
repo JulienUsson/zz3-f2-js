@@ -123,6 +123,61 @@ retry(fetchUsers, 3)
 
 ---
 
+## Exercice 9 : Timeout avec Promise.race
+
+Écrire une fonction `fetchWithTimeout(promise, ms)` qui :
+
+- prend une promesse
+- échoue si elle met plus de ms millisecondes à se résoudre
+
+```javascript
+fetchWithTimeout(fetchUsers(), 2000)
+  .then(() => console.log("Success"))
+  .catch(() => console.log("Timeout"));
+```
+
+- En utilisant [Promise.race](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
+
+---
+
+## Exercice 10 : Promise.allSettled
+
+Lancer 3 requêtes API en parallèle :
+
+- API 1 → OK
+- API 2 → erreur
+- API 3 → OK
+
+Afficher :
+
+- le nombre de succès
+- le nombre d’échecs
+
+- En utilisant [Promise.allSettled](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+
+## Exercice 11 : Retry avec délai exponentiel (backoff)
+
+Améliorer la fonction `retry` :
+
+- attendre 1s avant la 2ᵉ tentative
+- 2s avant la 3ᵉ
+- 4s avant la 4ᵉ
+
+---
+
+## Exercice 12 : Limiter la concurrence
+
+Écrire une fonction `parallelLimit(tasks, limit)` qui :
+
+- prend un tableau de fonctions retournant des promesses
+- n’exécute jamais plus de limit promesses en parallèle
+
+```javascript
+parallelLimit([() => fetchUser(), () => fetchUser(), () => fetchUser()], 2);
+```
+
+---
+
 ## Autres ressources
 
 - [Comprendre les promesses en js](https://frank.taillandier.me/2017/03/23/comprendre-les-promesses-en-javascript/) [FR]
