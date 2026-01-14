@@ -153,9 +153,9 @@ function customPromiseReadFile(path) {
 async function getPostsPromise() {
   // On ne peut utiliser le mot-clé await que dans une fonction async
   try {
-    let user = await fetchUser()
-       let posts = await fetchUserPosts(user)
-       return posts
+        let user = await fetchUser()
+        let posts = await fetchUserPosts(user)
+        return posts
     } catch(e) {
         console.error(e)
         throw e
@@ -174,6 +174,35 @@ function getPostsPromise() {
             reject(e)
         })
     })
+}
+```
+
+---
+
+# Eviter les cascades
+
+```javascript {monaco} {height:'auto'}
+async function getUsersAndPostsCascade() {
+  try {
+        let users = await fetchUsers()
+        let posts = await fetchPosts()
+        return [users, posts]
+    } catch(e) {
+        console.error(e)
+        throw e
+    }
+}
+
+async function getUsersAndPosts() {
+  try {
+        let results = await Promise.all([fetchUsers(), fetchPosts()])
+        let users = results[0]
+        let posts = results[1]
+        return [users, posts]
+    } catch(e) {
+        console.error(e)
+        throw e
+    }
 }
 ```
 
