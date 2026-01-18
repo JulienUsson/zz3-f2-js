@@ -112,7 +112,7 @@ console.log(user.firstname); // Jean
 console.log(user.lastname); // Dupont
 ```
 
----
+ℹ️ [String.split()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) peut être utile ici.
 
 ## Exercice 7 : Refactor ES5 → ES6+
 
