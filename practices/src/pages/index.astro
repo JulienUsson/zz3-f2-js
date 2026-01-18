@@ -42,6 +42,12 @@ const practices = (await getCollection("practices")).sort((a, b) =>
         height: 200px;
         object-fit: cover;
       }
+      ul li .links {
+        margin-top: 8px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
@@ -66,8 +72,17 @@ const practices = (await getCollection("practices")).sort((a, b) =>
                       </a>
                     </div>
                     {!practice.data.slidesOnly && (
-                      <div>
+                      <div class="links">
                         <a href={`/practices/${practice.id}/`}>Exercices</a>
+                        {practice.data.correctionDate && (
+                          <a
+                            class="correction-link"
+                            href={`/corrections/${practice.id}/`}
+                            data-correction-date={practice.data.correctionDate}
+                          >
+                            Correction
+                          </a>
+                        )}
                       </div>
                     )}
                   </>
@@ -84,5 +99,21 @@ const practices = (await getCollection("practices")).sort((a, b) =>
       </ul>
     </main>
     <Footer />
+
+    <script>
+      let correctionLinks = document.querySelectorAll(
+        ".correction-link"
+      ) as NodeListOf<HTMLAnchorElement>;
+
+      correctionLinks.forEach((link) => {
+        const correctionDate = new Date(
+          link.getAttribute("data-correction-date")!
+        );
+        const now = new Date();
+        if (now < correctionDate) {
+          link.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "javascript-4",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build --base /$npm_package_name/",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.8.0",
+    "slidev-addon-javascript": "link:../slidev-addon-javascript",
+    "slidev-theme-javascript": "link:../slidev-theme-javascript",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@slidev/types": "^0.47.5",
+    "playwright-chromium": "^1.52.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "slidev-addon-javascript",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@slidev/types": "^0.47.0"
+  }
+}

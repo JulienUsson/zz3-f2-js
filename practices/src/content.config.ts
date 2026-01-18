@@ -8,9 +8,18 @@ const practices = defineCollection({
       title: z.string(),
       slides: z.string().optional(),
       slidesOnly: z.boolean().optional().default(false),
+      correctionDate: z.date().optional(),
       order: z.number().optional().default(1),
       image: z.string().optional(),
     }),
 });
 
-export const collections = { practices };
+const corrections = defineCollection({
+  loader: glob({ base: "./src/content/corrections", pattern: "**/*.{md,mdx}" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+    }),
+});
+
+export const collections = { practices, corrections };

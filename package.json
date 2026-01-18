@@ -1,15 +1,15 @@
 {
   "name": "zz3-f2-js",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "node build.js",
-    "practices:dev": "pnpm --filter practices dev",
-    "practices:build": "pnpm --filter practices build",
-    "slides:dev": "pnpm --filter slides dev",
-    "slides:export": "pnpm --filter slides export",
-    "slides:build": "pnpm --filter slides build"
+    "build": "node build.js"
   },
   "author": "Julien Usson",
   "license": "GPL-3.0-only",
-  "packageManager": "pnpm@10.19.0"
+  "packageManager": "pnpm@10.19.0",
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "turbo": "^2.7.5"
+  }
 }

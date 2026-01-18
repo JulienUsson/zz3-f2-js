@@ -1,75 +1,46 @@
 #!/usr/bin/env node
+// @ts-check
 
 import { execSync } from "child_process";
-import { readdir, rmSync, mkdirSync } from "fs";
-import { join, basename, extname } from "path";
+import { readdirSync, rmSync, cpSync } from "fs";
+import { join } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+console.log("🚧 Building packages...");
+execSync("turbo build", {
+  stdio: "inherit",
+  cwd: __dirname,
+});
+console.log("✅ Packages built successfully");
+
 try {
   rmSync("dist", { recursive: true, force: true });
-  console.log("✓ dist folder removed");
+  console.log("🧹 Cleaned up old dist folder");
 } catch (error) {
   console.log("ℹ dist folder does not exist");
 }
 
-try {
-  const command = `pnpm practices:build --outDir ../dist`;
-
-  console.log(`   Command: ${command}`);
-  execSync(command, {
-    stdio: "inherit",
-    cwd: __dirname,
-  });
-
-  console.log(`✓ practices built successfully`);
-} catch (error) {
-  console.error(`❌ Error building practices:`, error.message);
-  process.exit(1);
-}
-
-readdir(join(__dirname, "slides/src"), (err, files) => {
-  if (err) {
-    console.error("Error reading slides/src folder:", err);
-    process.exit(1);
-  }
-
-  const mdFiles = files.filter((file) => extname(file) === ".md");
-
-  if (mdFiles.length === 0) {
-    console.log("No .md files found in slides/src/");
-    process.exit(0);
-  }
-
-  console.log(`📁 ${mdFiles.length} .md file(s) found`);
-
-  mdFiles.forEach((file) => {
-    const slidesFilename = file;
-    const slidesName = basename(file, ".md");
-
-    console.log(`\n🔨 Building ${slidesName}...`);
-
-    const distPath = join("dist", slidesName);
-    mkdirSync(distPath, { recursive: true });
-
-    try {
-      const command = `pnpm slides:build src/${slidesFilename} --out ../../dist/${slidesName} --base /${slidesName}/`;
-
-      console.log(`   Command: ${command}`);
-      execSync(command, {
-        stdio: "inherit",
-        cwd: __dirname,
-      });
-
-      console.log(`✓ ${slidesName} built successfully`);
-    } catch (error) {
-      console.error(`❌ Error building ${slidesName}:`, error.message);
-      process.exit(1);
-    }
-  });
+console.log("📦 Copying built packages to dist folder...");
+cpSync(join(__dirname, "practices", "dist"), join(__dirname, "dist"), {
+  recursive: true,
 });
 
-console.log("\n🎉 Build completed successfully!");
+const slideshows = readdirSync(join(__dirname, "slides")).filter(
+  (file) => !file.startsWith("slidev-")
+);
+
+console.log(`📁 ${slideshows.length} slideshow(s) found`);
+slideshows.forEach((slideshow) => {
+  console.log(`📦 Copying slideshow: ${slideshow}`);
+  cpSync(
+    join(__dirname, "slides", slideshow, "dist"),
+    join(__dirname, "dist", slideshow),
+    { recursive: true }
+  );
+});
+
+console.log("✅ All built packages copied to dist folder successfully");
