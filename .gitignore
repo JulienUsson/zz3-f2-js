@@ -32,3 +32,6 @@ devenv.local.nix
 
 # Astro
 .astro/
+
+# Turbo
+.turbo

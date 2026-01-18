@@ -10,64 +10,37 @@ import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+console.log("🚧 Building packages...");
+execSync("turbo build", {
+  stdio: "inherit",
+  cwd: __dirname,
+});
+console.log("✅ Packages built successfully");
+
 try {
   rmSync("dist", { recursive: true, force: true });
-  console.log("✓ dist folder removed");
+  console.log("🧹 Cleaned up old dist folder");
 } catch (error) {
   console.log("ℹ dist folder does not exist");
 }
 
-try {
-  const command = `pnpm --filter practices build`;
+console.log("📦 Copying built packages to dist folder...");
+cpSync(join(__dirname, "practices", "dist"), join(__dirname, "dist"), {
+  recursive: true,
+});
 
-  console.log(`   Command: ${command}`);
-  execSync(command, {
-    stdio: "inherit",
-    cwd: __dirname,
-  });
-  cpSync(join(__dirname, "practices", "dist"), join(__dirname, "dist"), {
-    recursive: true,
-  });
-
-  console.log(`✓ practices built successfully`);
-} catch (error) {
-  console.error(`❌ Error building practices:`, error);
-  process.exit(1);
-}
-
-const slideshowFiles = readdirSync(join(__dirname, "slides"));
-if (!slideshowFiles) {
-  console.error("Error reading slides/src folder");
-  process.exit(1);
-}
-const slideshows = slideshowFiles.filter((file) => !file.startsWith("slidev-"));
-
-if (slideshows.length === 0) {
-  console.log("No slideshows found in slides folder.");
-  process.exit(0);
-}
+const slideshows = readdirSync(join(__dirname, "slides")).filter(
+  (file) => !file.startsWith("slidev-")
+);
 
 console.log(`📁 ${slideshows.length} slideshow(s) found`);
 slideshows.forEach((slideshow) => {
-  console.log(`\n🔨 Building ${slideshow}...`);
-
-  try {
-    const command = `pnpm --filter ${slideshow} build`;
-
-    console.log(`   Command: ${command}`);
-    execSync(command, {
-      stdio: "inherit",
-      cwd: __dirname,
-    });
-    cpSync(
-      join(__dirname, "slides", slideshow, "dist"),
-      join(__dirname, "dist", slideshow),
-      { recursive: true }
-    );
-
-    console.log(`✓ ${slideshow} built successfully`);
-  } catch (error) {
-    console.error(`❌ Error building ${slideshow}:`, error);
-    process.exit(1);
-  }
+  console.log(`📦 Copying slideshow: ${slideshow}`);
+  cpSync(
+    join(__dirname, "slides", slideshow, "dist"),
+    join(__dirname, "dist", slideshow),
+    { recursive: true }
+  );
 });
+
+console.log("✅ All built packages copied to dist folder successfully");

@@ -1,6 +1,7 @@
 {
   "name": "zz3-f2-js",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "node build.js"
   },
@@ -8,6 +9,7 @@
   "license": "GPL-3.0-only",
   "packageManager": "pnpm@10.19.0",
   "devDependencies": {
-    "@types/node": "^25.0.9"
+    "@types/node": "^25.0.9",
+    "turbo": "^2.7.5"
   }
 }
