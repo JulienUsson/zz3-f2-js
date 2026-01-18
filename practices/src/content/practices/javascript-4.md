@@ -114,41 +114,7 @@ function incrementScore(player) {
 
 ---
 
-## Exercice 5 — Chaînage immutable complexe (niveau 🔴)
-
-```js
-const users = [
-  { id: 1, name: "Alice", age: 25, active: true },
-  { id: 2, name: "Bob", age: 17, active: true },
-  { id: 3, name: "Charlie", age: 32, active: false },
-];
-```
-
-### Objectif
-
-À partir de `users`, produire un **nouveau tableau** contenant :
-
-- uniquement les utilisateurs :
-  - majeurs
-  - actifs
-
-- avec la structure suivante :
-
-```js
-{
-  id,
-  label: "NAME (AGE)" // utiliser template strings
-}
-```
-
-⚠️ Interdit :
-
-- variables intermédiaires
-- mutations
-
----
-
-## Exercice 6 — Piège classique : référence partagée (niveau 🔴)
+## Exercice 5 — Piège classique : référence partagée (niveau 🔴)
 
 ```js
 const defaultSettings = {
@@ -183,7 +149,7 @@ user1.settings.theme = "light";
 
 ---
 
-## Exercice 7 — Update conditionnel immutable (niveau 🔴)
+## Exercice 6 — Update conditionnel immutable (niveau 🔴)
 
 ```js
 const state = {
@@ -210,7 +176,7 @@ Résultat :
 
 ---
 
-## Exercice 8 — Détection de mutation (niveau 🔥)
+## Exercice 7 — Détection de mutation (niveau 🔥)
 
 ### Code à analyser
 
