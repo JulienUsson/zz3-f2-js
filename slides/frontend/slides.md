@@ -1,6 +1,8 @@
 ---
 title: Frontend
-theme: ./theme
+theme: slidev-theme-javascript
+addons:
+  - slidev-addon-javascript
 layout: cover
 defaults:
   layout: center
