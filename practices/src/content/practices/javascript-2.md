@@ -1,6 +1,7 @@
 ---
 title: "Javascript 2"
 slides: "javascript-2"
+correctionDate: 2026-01-15
 ---
 
 Avant de commencer, n'oubliez pas que la documentation de Javascript est disponible [ici](https://developer.mozilla.org/fr/docs/Web/JavaScript) ou [là](https://www.w3schools.com/js/default.asp). Nous utiliserons [CodeSandbox](https://codesandbox.io/s/vanilla) (fonctionne mieux avec Chrome/Chromium), un environnement en ligne pour coder et exécuter du Javascript.
