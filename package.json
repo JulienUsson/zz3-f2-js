@@ -11,5 +11,8 @@
   "devDependencies": {
     "@types/node": "^25.0.9",
     "turbo": "^2.7.5"
+  },
+  "dependencies": {
+    "@netlify/cache-utils": "^6.0.4"
   }
 }

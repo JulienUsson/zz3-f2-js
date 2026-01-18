@@ -6,16 +6,23 @@ import { readdirSync, rmSync, cpSync } from "fs";
 import { join } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import * as cache from "@netlify/cache-utils";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+console.log("🚀 Restoring cache...");
+await cache.restore(["./.turbo"]);
+
 console.log("🚧 Building packages...");
-execSync("turbo build", {
+execSync("turbo build --concurrency=1", {
   stdio: "inherit",
   cwd: __dirname,
 });
 console.log("✅ Packages built successfully");
+
+await cache.save(["./.turbo"]);
+console.log("💾 Cache saved");
 
 try {
   rmSync("dist", { recursive: true, force: true });
