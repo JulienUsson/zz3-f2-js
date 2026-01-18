@@ -30,7 +30,15 @@ russianRoulette();
 
 ## Exercice 2 : Utiliser les promesses
 
-Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me/api/?results=100) avec [axios](https://github.com/axios/axios#example) et qui les affichent.
+Ecrire un script qui récupère une liste d'utilisateurs via [https://javascript.usson.dev/api/users.json](https://javascript.usson.dev/api/users.json) avec [axios](https://github.com/axios/axios#example)
+
+```javascript
+import axios from "axios";
+
+axios.get("https://javascript.usson.dev/api/users.json");
+```
+
+et qui affiche les utilisateurs habitants en France. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
 
 - En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
 - En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
@@ -41,25 +49,7 @@ Ecrire un script qui récupère 100 users via [randomuser](https://randomuser.me
 
 ---
 
-## Exercice 3 : Utiliser les promesses
-
-Ecrire un script qui récupère 100 users et qui affiche les users habitants en France. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
-
-- En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
-- En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
-
----
-
-## Exercice 4 : Utiliser les promesses
-
-Ecrire un script qui récupère 100 users et qui stocke dans un second tableau uniquement le prénom et le nom (`{firstname: "Julien", lastname: "Usson"}`)de tous les users dont le timezone est Paris. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter), [map()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map) et [forEach()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach))
-
-- En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses)
-- En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await)
-
----
-
-## Exercice 5 : Transformer un callback en promesse
+## Exercice 3 : Transformer un callback en promesse
 
 La fonction [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) permet d'exécuter du code après x ms de façon asynchrone. Malheureusement, à l'époque de la création de cette fonction, les promesses n'existaient pas !
 
@@ -74,14 +64,13 @@ Créer une fonction wrappant setTimeout() dans une promesse puis écrire un prog
 ```
 
 - En utilisant [setTimeout()](https://developer.mozilla.org/fr/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
-- En utilisant les [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses) et votre nouvelle fonction
 - En utilisant [async](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function)/[await](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await) et votre nouvelle fonction
 
 ---
 
-## Exercice 6 : Gestion des erreurs
+## Exercice 4 : Gestion des erreurs
 
-Écrire un script qui récupère 100 users depuis l’API [randomuser](https://randomuser.me/api/?results=100).
+Écrire un script qui récupère la liste d'utilisateurs
 
 Si la requête fonctionne, afficher `Users loaded`.
 
@@ -96,9 +85,9 @@ Ajouter un finally qui affiche `Request finished`.
 
 ---
 
-## Exercice 7 : Paralléliser des promesses avec Promise.all
+## Exercice 5 : Paralléliser des promesses avec Promise.all
 
-Écrire un script qui récupère en parallèle 50 users et 50 autres users puis fusionne les deux tableaux en un seul et affiche le nombre total d’utilisateurs.
+Écrire un script qui récupère la liste des utilisateurs une seconde [https://javascript.usson.dev/api/users2.json](https://javascript.usson.dev/api/users2.json) puis fusionne les deux tableaux en un seul et affiche le nombre total d’utilisateurs.
 
 - En utilisant [Promise.all](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 
@@ -106,7 +95,7 @@ Ajouter un finally qui affiche `Request finished`.
 
 ---
 
-## Exercice 8 : Créer une fonction retry avec promesse
+## Exercice 6 : Créer une fonction retry avec promesse
 
 Créer une fonction `retry(fn, attempts)` qui :
 
@@ -124,7 +113,7 @@ retry(fetchUsers, 3)
 
 ---
 
-## Exercice 9 : Timeout avec Promise.race
+## Exercice 7 : Timeout avec Promise.race
 
 Écrire une fonction `fetchWithTimeout(promise, ms)` qui :
 
@@ -141,7 +130,7 @@ fetchWithTimeout(fetchUsers(), 2000)
 
 ---
 
-## Exercice 10 : Promise.allSettled
+## Exercice 8 : Promise.allSettled
 
 Lancer 3 requêtes API en parallèle :
 
@@ -156,7 +145,7 @@ Afficher :
 
 - En utilisant [Promise.allSettled](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
 
-## Exercice 11 : Retry avec délai exponentiel (backoff)
+## Exercice 9 : Retry avec délai exponentiel (backoff)
 
 Améliorer la fonction `retry` :
 
@@ -166,7 +155,7 @@ Améliorer la fonction `retry` :
 
 ---
 
-## Exercice 12 : Limiter la concurrence
+## Exercice 10 : Limiter la concurrence
 
 Écrire une fonction `parallelLimit(tasks, limit)` qui :
 
@@ -176,6 +165,8 @@ Améliorer la fonction `retry` :
 ```javascript
 parallelLimit([() => fetchUser(), () => fetchUser(), () => fetchUser()], 2);
 ```
+
+ℹ️ [Promise.race](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/race) peut être utile ici.
 
 ---
 
