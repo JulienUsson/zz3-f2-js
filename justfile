@@ -12,9 +12,10 @@ build:
 
 preview:
   #!/usr/bin/env bash
-  rm -rf ./practices/public/preview/*
-  for SLIDE in slides/src/*.md; do
-    SLIDE_FILENAME=$(basename "$SLIDE");
-    SLIDE_NAME=$(basename "$SLIDE" .md);
-    pnpm slides:export src/${SLIDE_FILENAME} --format png --range 1 --output ../practices/public/preview/${SLIDE_NAME}
+  for SLIDESHOW in slides/*; do
+    if [[ "$SLIDESHOW" =~ ^slides/slidev- ]]; then 
+      continue; 
+    fi
+    SLIDESHOW=$(basename $SLIDESHOW)
+    pnpm --filter $SLIDESHOW preview --output "../../practices/public/preview/${SLIDESHOW}"
   done

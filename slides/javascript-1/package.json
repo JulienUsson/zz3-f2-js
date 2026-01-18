@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build --base /$npm_package_name/",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "preview": "slidev export --format png --range 1"
   },
   "dependencies": {
     "@slidev/cli": "^52.8.0",
