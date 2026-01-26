@@ -31,11 +31,13 @@ try {
 import axios from "axios";
 
 axios
-  .get("https://javascript.usson.dev/api/users.json")
+  .get(
+    "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json",
+  )
   .then((response) => {
     const users = response.data;
     const frenchUsers = users.filter(
-      (user) => user.location.country === "France"
+      (user) => user.location.country === "France",
     );
     console.log("Utilisateurs en France :", frenchUsers);
   })
@@ -50,10 +52,10 @@ console.log("Ceci s'affichera probablement AVANT la liste des utilisateurs.");
 async function getFrenchUsers() {
   try {
     const response = await axios.get(
-      "https://javascript.usson.dev/api/users.json"
+      "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json",
     );
     const frenchUsers = response.data.filter(
-      (user) => user.location.country === "France"
+      (user) => user.location.country === "France",
     );
     console.log("Utilisateurs en France (async) :", frenchUsers);
   } catch (err) {
@@ -97,7 +99,9 @@ joke();
 ```javascript
 async function fetchWithHandling() {
   try {
-    await axios.get("https://javascript.usson.dev/api/users.json");
+    await axios.get(
+      "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json",
+    );
     console.log("Users loaded");
   } catch (error) {
     console.log("Something went wrong");
@@ -118,8 +122,12 @@ async function fetchInParallel() {
   try {
     // On lance les deux promesses en même temps
     const [res1, res2] = await Promise.all([
-      axios.get("https://javascript.usson.dev/api/users.json"),
-      axios.get("https://javascript.usson.dev/api/users2.json"),
+      axios.get(
+        "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json",
+      ),
+      axios.get(
+        "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users2.json",
+      ),
     ]);
 
     const allUsers = [].concat(res1.data).concat(res2.data);
@@ -166,7 +174,7 @@ On fait la course entre la requête et un chronomètre qui rejette la promesse.
 ```javascript
 function fetchWithTimeout(promise, ms) {
   const timeout = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error("Timeout")), ms)
+    setTimeout(() => reject(new Error("Timeout")), ms),
   );
 
   return Promise.race([promise, timeout]);

@@ -30,12 +30,14 @@ russianRoulette();
 
 ## Exercice 2 : Utiliser les promesses
 
-Ecrire un script qui récupère une liste d'utilisateurs via [https://javascript.usson.dev/api/users.json](https://javascript.usson.dev/api/users.json) avec [axios](https://github.com/axios/axios#example)
+Ecrire un script qui récupère une liste d'utilisateurs via [https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json](https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json) avec [axios](https://github.com/axios/axios#example)
 
 ```javascript
 import axios from "axios";
 
-axios.get("https://javascript.usson.dev/api/users.json");
+axios.get(
+  "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json",
+);
 ```
 
 et qui affiche les utilisateurs habitants en France. (Utiliser [filter()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter))
@@ -87,7 +89,7 @@ Ajouter un finally qui affiche `Request finished`.
 
 ## Exercice 5 : Paralléliser des promesses avec Promise.all
 
-Écrire un script qui récupère la liste des utilisateurs une seconde [https://javascript.usson.dev/api/users2.json](https://javascript.usson.dev/api/users2.json) puis fusionne les deux tableaux en un seul et affiche le nombre total d’utilisateurs.
+Écrire un script qui récupère la liste des utilisateurs une seconde [https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users2.json](https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users2.json) puis fusionne les deux tableaux en un seul et affiche le nombre total d’utilisateurs.
 
 - En utilisant [Promise.all](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
 
