@@ -6,7 +6,7 @@ import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 const practices = (await getCollection("practices")).sort((a, b) =>
-  b.data.title.localeCompare(a.data.title)
+  b.data.title.localeCompare(a.data.title),
 );
 ---
 
@@ -48,6 +48,10 @@ const practices = (await getCollection("practices")).sort((a, b) =>
         gap: 16px;
         justify-content: center;
       }
+      .form-container {
+        width: 100%;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -59,7 +63,7 @@ const practices = (await getCollection("practices")).sort((a, b) =>
             .sort(
               (a, b) =>
                 a.data.order.valueOf() - b.data.order.valueOf() ||
-                a.data.title.localeCompare(b.data.title)
+                a.data.title.localeCompare(b.data.title),
             )
             .map((practice) => (
               <li>
@@ -76,9 +80,8 @@ const practices = (await getCollection("practices")).sort((a, b) =>
                         <a href={`/practices/${practice.id}/`}>Exercices</a>
                         {practice.data.correctionDate && (
                           <a
-                            class="correction-link"
                             href={`/corrections/${practice.id}/`}
-                            data-correction-date={practice.data.correctionDate}
+                            data-display-date={practice.data.correctionDate}
                           >
                             Correction
                           </a>
@@ -97,20 +100,24 @@ const practices = (await getCollection("practices")).sort((a, b) =>
             ))
         }
       </ul>
+      <div class="form-container" data-display-date="2026-02-13">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf4ziH9SONkhmLWRiFsnaY1Lkv9Zg97JEwFw9QthBn814QhZQ/viewform"
+          >Questionnaire de Satisfaction</a
+        >
+      </div>
     </main>
     <Footer />
 
     <script>
       let correctionLinks = document.querySelectorAll(
-        ".correction-link"
+        "[data-display-date]",
       ) as NodeListOf<HTMLAnchorElement>;
 
       correctionLinks.forEach((link) => {
-        const correctionDate = new Date(
-          link.getAttribute("data-correction-date")!
-        );
+        const displayDate = new Date(link.getAttribute("data-display-date")!);
         const now = new Date();
-        if (now < correctionDate) {
+        if (now < displayDate) {
           link.style.display = "none";
         }
       });
