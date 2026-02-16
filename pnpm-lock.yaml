@@ -213,6 +213,28 @@ importers:
         specifier: ^1.52.0
         version: 1.52.0
 
+  slides/security:
+    dependencies:
+      '@slidev/cli':
+        specifier: ^52.8.0
+        version: 52.8.0(@babel/parser@7.28.5)(@nuxt/kit@3.20.0(magicast@0.3.5))(@types/markdown-it@14.1.2)(@types/node@25.0.9)(@vue/compiler-sfc@3.5.24)(magicast@0.3.5)(markdown-it-async@2.2.0)(playwright-chromium@1.52.0)(postcss@8.5.6)
+      slidev-addon-javascript:
+        specifier: link:../slidev-addon-javascript
+        version: link:../slidev-addon-javascript
+      slidev-theme-javascript:
+        specifier: link:../slidev-theme-javascript
+        version: link:../slidev-theme-javascript
+      vue:
+        specifier: ^3.5.22
+        version: 3.5.24(typescript@5.9.3)
+    devDependencies:
+      '@slidev/types':
+        specifier: ^0.47.5
+        version: 0.47.5
+      playwright-chromium:
+        specifier: ^1.52.0
+        version: 1.52.0
+
   slides/slidev-addon-javascript:
     dependencies:
       '@slidev/types':
