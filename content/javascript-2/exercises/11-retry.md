@@ -3,6 +3,7 @@ layout: exercise
 title: Réessayer en cas d'échec
 duration: 12
 difficulty: 3
+bonus: true
 goal: Composer vos propres utilitaires à partir des promesses.
 ---
 

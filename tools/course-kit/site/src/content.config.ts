@@ -30,6 +30,8 @@ const exercises = defineCollection({
     duration: z.number().optional(),
     difficulty: z.number().min(1).max(3).optional().default(1),
     goal: z.string().optional(),
+    // Hors du parcours de la séance : proposé aux plus rapides.
+    bonus: z.boolean().optional().default(false),
     // Lu par Slidev, ignoré ici.
     layout: z.string().optional(),
   }),

@@ -3,6 +3,7 @@ layout: exercise
 title: Espacer les tentatives
 duration: 10
 difficulty: 3
+bonus: true
 goal: Ne pas marteler un serveur déjà en difficulté.
 ---
 
