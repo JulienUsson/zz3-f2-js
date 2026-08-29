@@ -175,6 +175,10 @@ enum E {
 ```
 
 ---
+src: ./exercises/01-types-primitifs.md
+---
+
+---
 
 # Tableaux
 
@@ -197,6 +201,10 @@ let user: [string, number] = ["Julien", 31];
 ```
 
 ➡️ tableau à structure fixe
+
+---
+src: ./exercises/02-tableaux-tuples.md
+---
 
 ---
 
@@ -227,6 +235,10 @@ if (typeof data === "string") {
 * oblige à vérifier
 
 ---
+src: ./exercises/03-any-unknown.md
+---
+
+---
 
 # Typage des fonctions
 
@@ -243,6 +255,10 @@ function greet(name?: string) {
   console.log(`Hello ${name ?? "World"}`);
 }
 ```
+
+---
+src: ./exercises/04-fonctions.md
+---
 
 ---
 
@@ -297,6 +313,10 @@ interface Admin extends User {
  * logique proche de l’héritage en POO
 
 ---
+src: ./exercises/05-objets-interfaces.md
+---
+
+---
 
 # Type
 
@@ -320,6 +340,10 @@ type Entity = HasId & HasName;
 * recommandé pour la typage avancé
 
 ---
+src: ./exercises/06-union-discriminee.md
+---
+
+---
 
 # Generics \<T>
 
@@ -332,6 +356,10 @@ function identity<T>(arg: T): T {
   return arg;
 }
 ```
+
+---
+src: ./exercises/07-generics.md
+---
 
 ---
 
@@ -351,6 +379,18 @@ type UserUpdate = Partial<User>
 ```
 
 [Et pleins d'autres...](http://typescriptlang.org/docs/handbook/utility-types.html)
+
+---
+src: ./exercises/08-utility-types.md
+---
+
+---
+src: ./exercises/09-readonly-immutabilite.md
+---
+
+---
+src: ./exercises/10-mini-projet-tournoi.md
+---
 
 ---
 layout: question
