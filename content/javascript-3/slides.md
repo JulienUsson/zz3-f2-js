@@ -90,6 +90,10 @@ user1.sayHello()
 - Plus performant
 
 ---
+src: ./exercises/01-constructeur-user.md
+---
+
+---
 
 # Comment ça marche ?
 
@@ -138,6 +142,10 @@ layout: question
 On va vraiment devoir écrire tout ça ?
 
 ---
+src: ./exercises/02-heritage-es5.md
+---
+
+---
 
 # 2015: les classes arrivent 🎉
 
@@ -180,6 +188,12 @@ console.log(typeof User)
 
 ---
 
+---
+src: ./exercises/03-classe-user.md
+---
+
+---
+
 # L’héritage avec ES6
 
 ```javascript {monaco-run} {height:'auto'}
@@ -204,6 +218,14 @@ admin.deleteUser()
 ```
 
 ---
+src: ./exercises/04-heritage-es6.md
+---
+
+---
+src: ./exercises/05-polymorphisme.md
+---
+
+---
 
 # Méthodes statiques
 
@@ -219,6 +241,10 @@ console.log(MathUtils.add(1, 2))
 
 * Appelées sur la classe
 * Pas sur les instances
+
+---
+src: ./exercises/06-methodes-statiques.md
+---
 
 ---
 
@@ -250,6 +276,10 @@ console.log(user.name)
 ```
 
 ---
+src: ./exercises/07-getter-setter.md
+---
+
+---
 
 # Champs privés (ES2022)
 
@@ -275,6 +305,18 @@ account.showBalance()
 * Avant ES2022 : convention `_balance`
 * Vraiment privés
 * Inaccessibles depuis l’extérieur
+
+---
+src: ./exercises/08-champs-prives.md
+---
+
+---
+src: ./exercises/09-refactor-es5-es6.md
+---
+
+---
+src: ./exercises/10-mini-projet-combat.md
+---
 
 ---
 layout: question
