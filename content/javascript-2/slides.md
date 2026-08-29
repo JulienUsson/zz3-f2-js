@@ -94,22 +94,55 @@ src: ./exercises/01-exceptions-roulette.md
 
 # Un seul thread
 
-Javascript exécute **une seule chose à la fois**. Tant qu'une instruction tourne,
-rien d'autre ne peut avancer : ni le reste du code, ni les clics, ni l'affichage.
+Javascript exécute **une seule chose à la fois**. Cliquez sur le compteur,
+puis lancez chacune des deux attentes :
+
+<Latence :seconds="3" />
+
+➡️ Même durée, deux comportements opposés. Une opération lente (réseau, disque,
+base de données) **ne peut donc pas** attendre sur place : c'est le problème que
+tout le reste de la séance résout.
+
+---
+
+# Ce qui se passe dans les deux cas
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
-console.log("Début — essayez de sélectionner ce texte pendant l'exécution")
-
+// Version bloquante : le thread est confisqué pendant 3 secondes.
 const fin = Date.now() + 3000
-while (Date.now() < fin) {
-  // on occupe le thread pendant 3 secondes, sans rien faire d'utile
-}
-
-console.log("Fin — 3 secondes plus tard")
+while (Date.now() < fin) { /* rien d'utile, mais personne d'autre ne passe */ }
+console.log("bloquant : terminé")
 ```
 
-➡️ Une opération lente (réseau, disque, base de données) **ne peut donc pas**
-attendre sur place. C'est le problème que tout le reste de la séance résout.
+```javascript {monaco-run} {height:'auto', autorun:false}
+// Version asynchrone : on rend la main, on sera rappelé dans 3 secondes.
+setTimeout(() => console.log("asynchrone : terminé"), 3000)
+console.log("asynchrone : la suite s'exécute tout de suite")
+```
+
+Dans le second cas, les 3 secondes ne sont pas passées **dans** notre code :
+c'est le navigateur qui les compte, et qui nous rappelle après.
+
+---
+
+# Attendre, ça coûte combien ?
+
+Le processeur travaille en **nanosecondes**. Le réseau répond en **centaines de
+millisecondes**. Pour saisir l'écart, ramenons tout à l'échelle humaine, en
+posant *1 ns = 1 seconde* :
+
+| Opération | Temps réel | À l'échelle humaine |
+|---|---|---|
+| Lire le cache L1 du processeur | 1 ns | **1 seconde** |
+| Lire la RAM | 100 ns | 1 min 40 |
+| Lire un SSD | 100 µs | 1 journée |
+| Aller-retour réseau, même datacenter | 0,5 ms | 6 jours |
+| Aller-retour Paris → New York | 70 ms | 2 ans |
+| Une requête HTTP réelle | 300 ms | **9 ans** |
+
+➡️ Un `fetch()`, pour le processeur, c'est neuf ans d'attente. La vraie question
+n'est pas « comment aller plus vite », c'est **« qu'est-ce qu'on fait pendant
+ce temps-là ? »**
 
 ---
 
@@ -348,6 +381,37 @@ le programme continue, mais l'erreur est perdue.
 ---
 src: ./exercises/07-gestion-des-erreurs.md
 ---
+
+---
+
+# Mesurer la différence
+
+Trois requêtes, l'une après l'autre puis toutes en même temps. Les barres sont
+mesurées **chez vous**, en direct.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+const URL = "https://raw.githubusercontent.com/JulienUsson/zz3-f2-js/refs/heads/master/api/users.json"
+const get = (n) => fetch(`${URL}?${n}`, { cache: "no-store" })
+
+async function mesure(label, fn) {
+  const debut = performance.now()
+  await fn()
+  const ms = Math.round(performance.now() - debut)
+  console.log(label.padEnd(13) + "█".repeat(Math.round(ms / 15)) + ` ${ms} ms`)
+}
+
+async function main() {
+  await get("chauffe") // la 1re requête paie la connexion : on ne la mesure pas
+
+  await mesure("1 requête", () => get(1))
+  await mesure("3 à la suite", async () => { for (const n of [2, 3, 4]) await get(n) })
+  await mesure("3 ensemble", () => Promise.all([get(5), get(6), get(7)]))
+}
+main()
+```
+
+⚠️ `await` dans une boucle, c'est **une attente après l'autre**. `Promise.all`,
+c'est la même attente, une seule fois.
 
 ---
 
