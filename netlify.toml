@@ -5,6 +5,14 @@ command = "pnpm build"
 [build.environment]
 NODE_VERSION = "22"
 
+# Une preview reconstruisait les douze diaporamas, puis `master` reconstruisait
+# exactement la même chose au merge : on payait deux fois le même build, pour
+# ~13 min à chaque changement de thème. La vérification des PR est passée sur
+# GitHub Actions (gratuit sur un dépôt public), donc on annule le build ici.
+# `ignore` annule le déploiement quand la commande sort en 0.
+[context.deploy-preview]
+  ignore = "exit 0"
+
 [[redirects]]
 from = "/.well-known/*"
 to = "/.well-known/:splat"

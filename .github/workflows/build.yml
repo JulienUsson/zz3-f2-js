@@ -1,0 +1,57 @@
+# Vérifie qu'une PR construit toujours le site, sans consommer les minutes de
+# build Netlify — qui sont désormais réservées au déploiement de `master`.
+name: Build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Même cache de diaporamas que sur Netlify : seuls ceux dont le contenu a
+      # bougé sont reconstruits. `restore-keys` récupère le cache de `master`
+      # quand la branche n'en a pas encore.
+      - uses: actions/cache@v4
+        with:
+          path: .course-cache
+          key: decks-${{ github.sha }}
+          restore-keys: |
+            decks-
+
+      - run: pnpm build
+
+      # Un build qui « réussit » en oubliant des pages resterait vert sans ça :
+      # chaque module doit avoir sa fiche de TP, et chaque `slides.md` son
+      # diaporama. Les modules Pizzima n'ont pas de diaporama, d'où les deux
+      # boucles séparées.
+      - name: Vérifier que le site est complet
+        run: |
+          set -euo pipefail
+          test -f dist/index.html
+          for module in content/*/module.md; do
+            id=$(basename "$(dirname "$module")")
+            test -f "dist/practices/$id/index.html" || { echo "fiche manquante : $id"; exit 1; }
+          done
+          for slides in content/*/slides.md; do
+            id=$(basename "$(dirname "$slides")")
+            test -f "dist/$id/index.html" || { echo "diaporama manquant : $id"; exit 1; }
+          done
+          echo "$(find dist -name index.html | wc -l) page(s), $(ls -d content/*/slides.md | wc -l) diaporama(s)"
