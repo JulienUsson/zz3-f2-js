@@ -25,7 +25,7 @@ d'heure à chaque déploiement, même pour une virgule corrigée dans un corrig�
 Chaque diaporama est donc rangé dans `.course-cache/<module>-<empreinte>/`.
 L'empreinte est un hachage de **ce que Slidev lit réellement** :
 
-- `content/<module>/slides.md`
+- `content/<module>/slides.md` et `content/<module>/quiz.md`
 - `content/<module>/exercises/` et `content/<module>/assets/`
 - `tools/theme/` et `tools/addon/`, qui changent l'apparence de tous les
   diaporamas
@@ -55,6 +55,7 @@ Tout part du système de fichiers, il n'y a pas de manifeste à tenir à jour :
 | ------------------------------ | ------------------------------------------ |
 | `content/<id>/module.md`       | crée la séance `<id>`                      |
 | `content/<id>/slides.md`       | crée le diaporama servi sur `/<id>/`       |
+| `content/<id>/quiz.md`         | le quiz collectif, en tête du diaporama    |
 | `content/<id>/exercises/*.md`  | remplit la fiche `/practices/<id>/`        |
 | `content/<id>/correction.md`   | crée le corrigé `/corrections/<id>/`       |
 | `content/<id>/preview.png`     | la vignette de l'accueil                   |

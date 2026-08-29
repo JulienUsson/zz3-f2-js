@@ -12,6 +12,11 @@ defaults:
 
 Un cours avec classe 😎
 
+
+---
+src: ./quiz.md
+---
+
 ---
 
 # JS est orienté objet

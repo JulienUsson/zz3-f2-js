@@ -12,6 +12,11 @@ defaults:
 
 Un peu de sucre dans JavaScript
 
+
+---
+src: ./quiz.md
+---
+
 ---
 
 # Valeurs par défaut

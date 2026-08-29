@@ -11,6 +11,7 @@ mécanique, et vous n'avez normalement pas à y toucher pour préparer un cours.
 content/javascript-1/
   module.md      la fiche : titre, ordre, date de correction, puis l'intro du TP
   slides.md      le diaporama Slidev
+  quiz.md        le quiz collectif de début de séance
   exercises/     un fichier par exercice
   correction.md  le corrigé
   assets/        les images du diaporama
@@ -35,6 +36,32 @@ EOF
 ```
 
 Elle apparaît immédiatement sur l'accueil, à sa place dans l'ordre.
+
+### Écrire le quiz de début de séance
+
+`content/ma-seance/quiz.md` contient une slide par question. Il est joué
+collectivement, à main levée, en ouverture de séance, et porte sur la séance
+**précédente** — il n'est pas noté, il sert à raviver les souvenirs.
+
+```markdown
+---
+layout: quiz
+---
+
+# Que vaut `[1, 5, 10].sort()` ?
+
+- **A.** `[1, 5, 10]`
+- **B.** `[1, 10, 5]`
+
+<v-click>
+
+> ✅ **B** — sans callback, `sort()` compare les valeurs comme des chaînes.
+
+</v-click>
+```
+
+Le bloc `<v-click>` masque la réponse : vous la révélez d'un clic, après le vote.
+Le quiz ne figure pas sur la fiche TP — c'est une activité de classe.
 
 ### Écrire un exercice
 

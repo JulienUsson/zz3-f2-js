@@ -52,8 +52,8 @@ function hashPath(hash, path, label) {
 /**
  * L'empreinte de tout ce qui peut changer le résultat du build d'un diaporama.
  *
- * On ne hache que ce que Slidev lit réellement : le `slides.md`, les exercices
- * qu'il importe et les images qu'il affiche. `module.md`, `correction.md` et
+ * On ne hache que ce que Slidev lit réellement : le `slides.md`, le quiz et les
+ * exercices qu'il importe, et les images qu'il affiche. `module.md`, `correction.md` et
  * `preview.png` vivent dans le même dossier mais ne concernent que le site —
  * les inclure ferait reconstruire un diaporama pour une virgule dans un
  * corrigé.
@@ -65,6 +65,7 @@ export function deckFingerprint(deck) {
   hash.update(`slidev:${slidevVersion()}\n`);
 
   hashPath(hash, deck.slides, "slides.md");
+  hashPath(hash, join(deck.dir, "quiz.md"), "quiz.md");
   hashPath(hash, join(deck.dir, "exercises"), "exercises");
   hashPath(hash, join(deck.dir, "assets"), "assets");
   // Le thème et l'addon changent l'apparence de tous les diaporamas.

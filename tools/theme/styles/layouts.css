@@ -301,3 +301,78 @@
 .exercise-timer.is-over .exercise-timer-reset {
   border-left-color: #c0392b;
 }
+
+/* --- Quiz collectif de début de séance ---------------------------------- */
+
+.slidev-layout.quiz {
+  --quiz-ink: #1f2933;
+  background-color: #f5f7ff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+  border-top: 10px solid #4a63d8;
+  color: var(--quiz-ink);
+}
+
+.slidev-layout.quiz .quiz-badge {
+  display: inline-block;
+  background-color: #4a63d8;
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.slidev-layout.quiz .quiz-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.slidev-layout.quiz .quiz-body h1 {
+  font-family: inherit;
+  font-weight: 700;
+  margin: 0 0 20px;
+  line-height: 1.2;
+  @apply text-3xl;
+}
+
+/* Les propositions : une par ligne, bien espacées pour être lues de loin. */
+.slidev-layout.quiz .quiz-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slidev-layout.quiz .quiz-body ul li {
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  @apply text-xl;
+}
+
+/* La réponse, révélée au clic. */
+.slidev-layout.quiz .quiz-body blockquote {
+  background-color: #e7f6ec;
+  border: 0;
+  border-left: 5px solid #2e7d4f;
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin: 20px 0 0;
+  quotes: none;
+}
+
+.slidev-layout.quiz .quiz-body blockquote p {
+  margin: 0;
+}
+
+.slidev-layout.quiz .quiz-body blockquote p + p {
+  margin-top: 8px;
+}

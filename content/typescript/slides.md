@@ -12,6 +12,11 @@ defaults:
 
 Javascript avec des types
 
+
+---
+src: ./quiz.md
+---
+
 ---
 
 # Typescript is Javascript that scales
