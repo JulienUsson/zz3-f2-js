@@ -26,6 +26,8 @@ Création d'une application web
  
 <img alt="Pizzima" src="./assets/pizzima.png" width="200px" />
 
+Un starter vous est fourni : vous codez des fonctionnalités, pas du tooling.
+
 ---
 
 # Thèmes abordés
