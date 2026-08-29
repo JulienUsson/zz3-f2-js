@@ -76,6 +76,22 @@ src/thumbnails.js  export PNG de la première slide
 site/              l'application Astro
 ```
 
+## La navigation dans les diaporamas
+
+`global-bottom.vue` ajoute, en haut à droite de chaque slide, un lien vers
+l'accueil et un vers la fiche de TP.
+
+Les deux se déduisent, rien n'est déclaré :
+
+- l'identifiant de la séance vient de `import.meta.env.BASE_URL`, que le CLI
+  positionne avec `--base /<séance>/` ;
+- le lien « Exercices » n'apparaît que si le diaporama contient au moins une
+  slide de layout `exercise`.
+
+En développement (`course dev <séance>`), le diaporama tourne sans base et sans
+site autour : les liens sont masqués, ils n'auraient nulle part où aller. Ils
+le sont aussi à l'export PNG, pour ne pas se retrouver sur les vignettes.
+
 ## Deux contraintes à connaître
 
 **Slidev cherche le thème dans le `package.json` le plus proche du fichier
