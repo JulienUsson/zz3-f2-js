@@ -1,0 +1,16 @@
+{
+  "title": "ZZ3F2 Javascript",
+  "description": "Javascript slides and practices for ZZ3F2",
+  "url": "https://javascript.usson.dev",
+  "email": "julien@usson.dev",
+  "github": "https://github.com/JulienUsson",
+  "author": {
+    "name": "Julien Usson",
+    "url": "https://julien.usson.dev"
+  },
+  "survey": {
+    "label": "Questionnaire de Satisfaction",
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSf4ziH9SONkhmLWRiFsnaY1Lkv9Zg97JEwFw9QthBn814QhZQ/viewform",
+    "from": "2026-03-03"
+  }
+}

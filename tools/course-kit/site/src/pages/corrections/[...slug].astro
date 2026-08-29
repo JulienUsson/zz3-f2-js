@@ -1,0 +1,23 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Correction from "../../layouts/Correction.astro";
+
+export async function getStaticPaths() {
+  const corrections = await getCollection("corrections");
+  const modules = new Map(
+    (await getCollection("modules")).map((module) => [module.id, module.data.title]),
+  );
+  return corrections.map((correction) => ({
+    params: { slug: correction.id },
+    props: { correction, title: correction.data.title ?? modules.get(correction.id) ?? correction.id },
+  }));
+}
+type Props = { correction: CollectionEntry<"corrections">; title: string };
+
+const { correction, title } = Astro.props;
+const { Content } = await render(correction);
+---
+
+<Correction title={title}>
+  <Content />
+</Correction>

@@ -1,5 +1,4 @@
 hoistPattern:
   - "@vue/compiler-sfc"
 packages:
-  - slides/*
-  - practices
+  - tools/*

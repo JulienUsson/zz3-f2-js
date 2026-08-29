@@ -1,0 +1,136 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { hasPreview, hasSlides } from "../content-fs";
+import { SITE, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const corrections = new Set((await getCollection("corrections")).map((c) => c.id));
+
+const modules = (await getCollection("modules"))
+  .filter((module) => !module.data.hidden)
+  .sort(
+    (a, b) =>
+      a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
+  )
+  .map((module) => ({
+    id: module.id,
+    title: module.data.title,
+    correctionDate: module.data.correctionDate,
+    slides: hasSlides(module.id),
+    preview: hasPreview(module.id) ? `/preview/${module.id}.png` : undefined,
+    // Une fiche n'existe que si le module a quelque chose à dire hors des slides.
+    practice: module.body?.trim() ? true : false,
+    // Comme avant : un corrigé n'est lié que s'il a une date de publication.
+    correction: corrections.has(module.id) && module.data.correctionDate != null,
+  }));
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        list-style-type: none;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      ul li .title {
+        margin-bottom: 16px;
+        font-size: 2em;
+      }
+      ul li a {
+        color: inherit;
+        display: block;
+      }
+      ul li img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      ul li .links {
+        margin-top: 8px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+      }
+      .form-container {
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <ul>
+        {
+          modules.map((module) => (
+            <li>
+              <h2 class="title">{module.title}</h2>
+              <div>
+                <a
+                  href={
+                    module.slides
+                      ? `/${module.id}/`
+                      : `/practices/${module.id}/`
+                  }
+                >
+                  {module.preview && <img src={module.preview} alt="" />}
+                </a>
+              </div>
+              {(module.practice || module.correction) && (
+                <div class="links">
+                  {module.practice && module.slides && (
+                    <a href={`/practices/${module.id}/`}>Exercices</a>
+                  )}
+                  {module.correction && (
+                    <a
+                      href={`/corrections/${module.id}/`}
+                      data-display-date={module.correctionDate?.toISOString()}
+                    >
+                      Correction
+                    </a>
+                  )}
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+      {
+        SITE.survey && (
+          <div class="form-container" data-display-date={SITE.survey.from}>
+            <a href={SITE.survey.url}>{SITE.survey.label}</a>
+          </div>
+        )
+      }
+    </main>
+    <Footer />
+
+    <script>
+      let correctionLinks = document.querySelectorAll(
+        "[data-display-date]",
+      ) as NodeListOf<HTMLAnchorElement>;
+
+      correctionLinks.forEach((link) => {
+        const displayDate = new Date(link.getAttribute("data-display-date")!);
+        const now = new Date();
+        if (now < displayDate) {
+          link.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

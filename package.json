@@ -3,16 +3,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.js"
+    "build": "course build",
+    "dev": "course dev",
+    "list": "course list",
+    "thumbnails": "course thumbnails"
   },
   "author": "Julien Usson",
   "license": "GPL-3.0-only",
   "packageManager": "pnpm@10.19.0",
-  "devDependencies": {
-    "@types/node": "^25.0.9",
-    "turbo": "^2.7.5"
-  },
   "dependencies": {
-    "@netlify/cache-utils": "^6.0.4"
+    "course-kit": "workspace:*",
+    "slidev-addon-javascript": "workspace:*",
+    "slidev-theme-javascript": "workspace:*"
   }
 }

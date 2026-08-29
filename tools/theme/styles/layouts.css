@@ -1,0 +1,303 @@
+:root {
+  --slidev-theme-background: #f6e995;
+  --slidev-theme-primary: #F7E018;
+}
+
+.slidev-layout {
+  background-color: var(--slidev-theme-background);
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+  }
+
+  p + h2, ul + h2, table + h2 {
+    @apply mt-10;
+  }
+  
+  h1 {
+    @apply text-4xl mb-4 -ml-[0.05em];
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-base;
+  }
+
+  h6 {
+    @apply text-sm pt-1 uppercase tracking-widest font-500 -ml-[0.05em];
+  }
+
+  h6:not(.opacity-100) {
+    @apply opacity-40;
+  }
+
+  li {
+    list-style: disc;
+  }
+
+  th {
+    font-weight: 600;
+  }
+}
+
+
+.slidev-layout.center {
+  h1 {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  h1:nth-of-type(n+2) {
+    margin-top: 16px;
+  }
+
+  p {
+    text-align: center;
+  }
+
+
+  p:has(+ ul) {
+    text-align: left;
+  }
+
+  img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slidev-monaco-container {
+    width: 600px;
+  }
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  h1 {
+    color: inherit;
+    @apply text-6xl leading-20;
+  }
+
+  h1 + p {
+    color: #616161;
+  }
+}
+
+.slidev-layout.question {
+  @apply text-center grid h-full;
+  background-color: #f5f5f5;
+
+  .question-container {
+    @apply text-xl;
+    background-color: var(--slidev-theme-primary);
+    border-radius: 8px;
+    position: relative;
+    padding: 24px;
+    margin: auto;
+    font-weight: 700;
+    width: fit-content;
+  }
+
+  .question-container:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    width: 0;
+    height: 0;
+    border: 40px solid transparent;
+    border-top-color: var(--slidev-theme-primary);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -20px;
+    margin-bottom: -40px;
+  }
+}
+
+.slidev-layout.fact {
+  @apply text-center grid h-full;
+  h1 {
+    @apply text-8xl font-700;
+  }
+  h1 + p {
+    @apply font-700 text-2xl;
+  }
+}
+
+.slidev-layout.statement {
+  @apply text-center grid h-full;
+
+  h1 {
+    @apply text-6xl font-700;
+  }
+}
+
+.slidev-layout.quote {
+  @apply grid h-full;
+
+  h1 + p {
+    @apply mt-2;
+  }
+}
+
+.slidev-layout.section {
+  h1 {
+    @apply text-6xl font-500 leading-20;
+  }
+}
+
+
+/* --- Exercices intercalés dans le cours -------------------------------- */
+
+.slidev-layout.exercise {
+  --exercise-ink: #1f2933;
+  background-color: #fffdf3;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+  border-top: 10px solid var(--slidev-theme-primary);
+  color: var(--exercise-ink);
+}
+
+.slidev-layout.exercise .exercise-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.slidev-layout.exercise .exercise-badge {
+  display: inline-block;
+  background-color: var(--slidev-theme-primary);
+  border-radius: 999px;
+  padding: 2px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.slidev-layout.exercise .exercise-title {
+  font-family: inherit;
+  font-weight: 700;
+  margin: 6px 0 0;
+  line-height: 1.15;
+  @apply text-3xl;
+}
+
+.slidev-layout.exercise .exercise-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.slidev-layout.exercise .exercise-goal {
+  margin: 0;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.slidev-layout.exercise .exercise-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.slidev-layout.exercise .exercise-body > :first-child {
+  margin-top: 0;
+}
+
+.slidev-layout.exercise .exercise-body pre {
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 6px;
+}
+
+/* Difficulté */
+
+.exercise-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.exercise-level-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #1f2933;
+  opacity: 0.35;
+}
+
+.exercise-level-dot.is-on {
+  background-color: #1f2933;
+  opacity: 1;
+}
+
+/* Chronomètre */
+
+.exercise-timer {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1.5px solid #1f2933;
+  border-radius: 999px;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+.exercise-timer-toggle,
+.exercise-timer-reset {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  padding: 5px 10px;
+}
+
+.exercise-timer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.exercise-timer-reset {
+  border-left: 1.5px solid #1f2933;
+  opacity: 0.6;
+}
+
+.exercise-timer-toggle:hover,
+.exercise-timer-reset:hover {
+  background-color: rgba(31, 41, 51, 0.08);
+}
+
+.exercise-timer.is-running .exercise-timer-toggle {
+  background-color: var(--slidev-theme-primary);
+}
+
+.exercise-timer.is-over {
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+.exercise-timer.is-over .exercise-timer-reset {
+  border-left-color: #c0392b;
+}

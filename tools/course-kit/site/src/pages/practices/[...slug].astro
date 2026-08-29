@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Practice from "../../layouts/Practice.astro";
+import Exercise from "../../components/Exercise.astro";
+import { hasAnyExercise } from "../../content-fs";
+
+export async function getStaticPaths() {
+  const modules = await getCollection("modules");
+  return modules.map((module) => ({
+    params: { slug: module.id },
+    props: module,
+  }));
+}
+type Props = CollectionEntry<"modules">;
+
+const module = Astro.props;
+const { Content } = await render(module);
+
+// Les exercices sont partagés avec les slides : `content/<module>/exercises/`.
+const exercises = (hasAnyExercise() ? await getCollection("exercises") : [])
+  .filter((exercise) => exercise.id.startsWith(`${module.id}/`))
+  .sort((a, b) => a.id.localeCompare(b.id));
+
+const renderedExercises = await Promise.all(
+  exercises.map(async (exercise) => ({
+    entry: exercise,
+    Content: (await render(exercise)).Content,
+  })),
+);
+---
+
+<Practice title={module.data.title}>
+  <Content />
+  {
+    renderedExercises.map(({ entry, Content: ExerciseContent }, index) => (
+      <Exercise entry={entry} index={index + 1}>
+        <ExerciseContent />
+      </Exercise>
+    ))
+  }
+</Practice>
