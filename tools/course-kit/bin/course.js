@@ -8,6 +8,7 @@ const USAGE = `
 course — le moteur du cours
 
   course build              Construit le site complet dans dist/
+  course build --no-cache   Reconstruit tous les diaporamas
   course dev                Lance le site en local
   course dev <module>       Lance le diaporama d'un module
   course thumbnails [mod]   Régénère les images de couverture
@@ -34,7 +35,7 @@ const [command, argument] = process.argv.slice(2);
 try {
   switch (command) {
     case "build":
-      build();
+      await build({ cache: argument !== "--no-cache" });
       break;
     case "dev":
       dev(argument);

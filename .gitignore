@@ -38,3 +38,7 @@ content/*/index.html
 
 # Couvertures recopiées depuis content/ par le CLI
 tools/course-kit/site/public/preview/
+
+# Diaporamas déjà construits, réutilisés d'un build à l'autre
+.course-cache/
+.netlify/

@@ -79,6 +79,9 @@ normal sur le site.
 | `pnpm list`                | lister les séances détectées                       |
 | `pnpm thumbnails`          | régénérer les vignettes depuis la première slide   |
 
+Les diaporamas inchangés sont repris d'un build sur l'autre : seuls ceux que
+vous avez modifiés sont reconstruits. `pnpm build --no-cache` force tout.
+
 ## Le reste du dépôt
 
 | Dossier            |                                                                    |
