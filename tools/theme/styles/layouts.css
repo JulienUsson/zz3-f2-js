@@ -312,8 +312,10 @@
   height: 100%;
   gap: 16px;
   /* Bandeau plein, là où l'exercice n'a qu'un filet : c'est ce qui distingue
-     les deux moments, sans sortir du jaune du reste du cours. */
-  border-top: 28px solid var(--slidev-theme-primary);
+     les deux moments, sans sortir du jaune du reste du cours.
+     Sa hauteur contient les liens de navigation (10 px du haut, ~25 px de
+     haut) sans qu'ils débordent. */
+  border-top: 44px solid var(--slidev-theme-primary);
   color: var(--quiz-ink);
 }
 
