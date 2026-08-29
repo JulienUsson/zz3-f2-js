@@ -11,6 +11,11 @@ defaults:
 # Javascript 2
 Des promesses… pas toujours tenues
 
+
+---
+src: ./quiz.md
+---
+
 ---
 layout: two-cols-header
 ---
