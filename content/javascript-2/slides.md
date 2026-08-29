@@ -80,6 +80,10 @@ console.log(text)
 // Si on catch pas, l'exception remonte la pile d'exécution jusqu'à trouver un catch
 // Si l'exception remonte toute la pile c'est le crash...
 ```
+
+---
+src: ./exercises/01-exceptions-roulette.md
+---
 ---
 
 # Javascript est non bloquant (asynchrone)
@@ -128,6 +132,10 @@ console.log("Bar")
 ```
 
 ---
+src: ./exercises/02-promesses-then.md
+---
+
+---
 monacoTypesSource: ata
 ---
 
@@ -146,6 +154,10 @@ function customPromiseReadFile(path) {
     })
 }
 ```
+
+---
+src: ./exercises/03-callback-vers-promesse.md
+---
 
 ---
 
@@ -180,6 +192,14 @@ function getPostsPromise() {
 ```
 
 ---
+src: ./exercises/04-async-await.md
+---
+
+---
+src: ./exercises/05-gestion-des-erreurs.md
+---
+
+---
 
 # Eviter les cascades
 
@@ -207,6 +227,89 @@ async function getUsersAndPosts() {
     }
 }
 ```
+
+---
+src: ./exercises/06-promise-all.md
+---
+
+---
+
+# Promise.race — le premier qui répond
+
+`race()` se résout — ou rejette — avec **la première** promesse à se terminer.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+const delay = (ms, value) => new Promise((resolve) => setTimeout(() => resolve(value), ms))
+
+Promise.race([delay(300, "rapide"), delay(1000, "lent")]).then(console.log)
+```
+
+⚠️ Les perdantes continuent de s'exécuter : `race()` ne les annule pas.
+
+Usage typique : mettre un **timeout** sur une opération qui n'en a pas.
+
+---
+src: ./exercises/07-promise-race-timeout.md
+---
+
+---
+
+# Promise.allSettled — tout attendre, échecs compris
+
+`all()` rejette dès qu'une promesse échoue. `allSettled()` attend tout le monde
+et décrit chaque issue.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+const ok = Promise.resolve(1)
+const ko = Promise.reject(new Error("boom"))
+
+Promise.allSettled([ok, ko]).then((results) => console.log(results))
+```
+
+* `{ status: "fulfilled", value }`
+* `{ status: "rejected", reason }`
+
+ℹ️ Il existe aussi `Promise.any()` : la première **réussite**, en ignorant les échecs.
+
+---
+src: ./exercises/08-promise-allsettled.md
+---
+
+---
+
+# Composer ses propres utilitaires
+
+Une promesse est une valeur comme une autre : on peut écrire des fonctions qui
+en prennent et en rendent.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+async function twice(fn) {
+  await fn()
+  await fn()
+}
+
+twice(async () => {
+  console.log("tic")
+  await delay(300)
+})
+```
+
+➡️ C'est tout ce qu'il faut pour écrire `retry`, un backoff, ou une limite de
+parallélisme.
+
+---
+src: ./exercises/09-retry.md
+---
+
+---
+src: ./exercises/10-retry-backoff.md
+---
+
+---
+src: ./exercises/11-parallel-limit.md
+---
 
 ---
 
