@@ -172,3 +172,94 @@ hr {
   border-bottom: 1px dotted rgb(var(--gray-dark));
   cursor: help;
 }
+/* --- Blocs de code exécutables sur les fiches de TP --------------------- */
+
+.runnable {
+  margin: 0 0 1em;
+}
+
+.runnable pre,
+.runnable-editor {
+  margin: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+/* `display: block` l'emporterait sur l'attribut `hidden` : il faut le dire. */
+.runnable [hidden] {
+  display: none;
+}
+
+.runnable-editor {
+  display: block;
+  width: 100%;
+  background-color: #24292e;
+  color: #e1e4e8;
+  border: 0;
+  padding: 1em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+  resize: vertical;
+  tab-size: 2;
+}
+
+.runnable-toolbar {
+  display: flex;
+  gap: 8px;
+  background-color: #1b1f23;
+  border-radius: 0 0 8px 8px;
+  padding: 6px 10px;
+}
+
+.runnable-toolbar button {
+  background-color: transparent;
+  border: 1px solid rgba(225, 228, 232, 0.3);
+  border-radius: 999px;
+  color: #e1e4e8;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 3px 12px;
+}
+
+.runnable-toolbar button:hover {
+  background-color: rgba(225, 228, 232, 0.15);
+}
+
+.runnable-toolbar .runnable-run {
+  background-color: #f7e018;
+  border-color: #f7e018;
+  color: #1f2933;
+  font-weight: 700;
+}
+
+.runnable-output {
+  background-color: #fffdf3;
+  border: 1px solid rgba(31, 41, 51, 0.15);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 8px 12px;
+}
+
+.runnable-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.runnable-line + .runnable-line {
+  border-top: 1px solid rgba(31, 41, 51, 0.08);
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+.runnable-line.is-warn {
+  color: #8a6d00;
+}
+
+.runnable-line.is-error {
+  color: #c0392b;
+}

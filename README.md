@@ -93,8 +93,10 @@ src: ./exercises/01-boucles-additionner-42.md
 ---
 ```
 
-Les blocs `monaco-run` sont exécutables dans les slides, et rendus en code
-normal sur le site.
+Les blocs `monaco-run` sont exécutables **des deux côtés** : dans les slides,
+et sur la fiche de TP, où l'élève peut aussi les modifier. Les blocs `monaco`
+seuls restent statiques — c'est ce qu'on veut pour Typescript, qui se compile
+mais ne s'exécute pas.
 
 ## Les commandes
 
