@@ -28,6 +28,10 @@ greet("Alice")
 - Par défaut, les paramètres non fournis sont `undefined`
 
 ---
+src: ./exercises/01-valeurs-par-defaut.md
+---
+
+---
 
 # Elvis operator
 
@@ -75,6 +79,10 @@ console.log(theme)
 ➡️ Affecte seulement si `null` ou `undefined`
 
 ---
+src: ./exercises/02-nullish.md
+---
+
+---
 
 # Destructuring
 
@@ -87,6 +95,10 @@ let numbers = [1,2,3,4,5]
 let [one, ...rest] = numbers
 console.log(one, rest)
 ```
+
+---
+src: ./exercises/03-destructuring.md
+---
 
 ---
 
@@ -116,6 +128,10 @@ console.log(JSON.stringify(obj2))
 ```
 
 ---
+src: ./exercises/04-spread.md
+---
+
+---
 
 # Rest operator
 
@@ -125,6 +141,10 @@ function sum(...numbers) {
 }
 console.log(sum(1, 2, 3, 4))
 ```
+
+---
+src: ./exercises/05-rest.md
+---
 
 ---
 
@@ -139,6 +159,10 @@ and I am ${age} years old`
 
 console.log(sentence)
 ```
+
+---
+src: ./exercises/06-template-strings.md
+---
 
 ---
 
@@ -190,6 +214,14 @@ console.log(user === updatedUser)
 ```
 
 ---
+src: ./exercises/07-mutation-cachee.md
+---
+
+---
+src: ./exercises/08-detection-de-mutation.md
+---
+
+---
 
 # Immutabilité avec les tableaux
 
@@ -201,6 +233,26 @@ console.log(numbers)
 console.log(newNumbers)
 console.log(numbers === newNumbers)
 ```
+
+---
+src: ./exercises/09-refactor-array.md
+---
+
+---
+src: ./exercises/10-refactor-object.md
+---
+
+---
+src: ./exercises/11-immutabilite-profonde.md
+---
+
+---
+src: ./exercises/12-reference-partagee.md
+---
+
+---
+src: ./exercises/13-update-conditionnel.md
+---
 
 ---
 layout: question
