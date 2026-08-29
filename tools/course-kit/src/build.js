@@ -10,6 +10,14 @@ import {
   listModules,
   resolveBin,
 } from "./paths.js";
+import {
+  cacheEntryName,
+  deckFingerprint,
+  pruneCache,
+  restoreDeck,
+  storeDeck,
+} from "./cache.js";
+import { restoreSharedCache, saveSharedCache } from "./netlify-cache.js";
 
 const run = (bin, args, cwd = KIT_DIR) =>
   execFileSync(resolveBin(bin), args, { stdio: "inherit", cwd });
@@ -48,13 +56,15 @@ export function buildDeck(module, outDir) {
   ]);
 }
 
-export function build({ out = join(REPO_DIR, "dist") } = {}) {
+export async function build({ out = join(REPO_DIR, "dist"), cache = true } = {}) {
   if (!existsSync(CONTENT_DIR)) {
     throw new Error(`Aucun dossier "content/" à la racine du dépôt.`);
   }
 
   console.log("🧹 Nettoyage de dist/");
   rmSync(out, { recursive: true, force: true });
+
+  if (cache) await restoreSharedCache();
 
   const previews = syncPreviews();
   console.log(`🖼️  ${previews} image(s) de couverture`);
@@ -63,13 +73,38 @@ export function build({ out = join(REPO_DIR, "dist") } = {}) {
   buildSite(out);
 
   const decks = listDecks();
-  console.log(`🎬 ${decks.length} diaporama(s) à construire`);
+  console.log(`🎬 ${decks.length} diaporama(s)`);
+
+  const started = Date.now();
+  const keep = [];
+  let reused = 0;
+
   // Un processus par diaporama : construire les douze en parallèle épuise la
   // mémoire (chaque build Slidev embarque Monaco et Shiki).
   for (const deck of decks) {
+    const target = join(out, deck.id);
+    const fingerprint = cache ? deckFingerprint(deck) : null;
+    if (fingerprint) keep.push(cacheEntryName(deck, fingerprint));
+
+    if (fingerprint && restoreDeck(deck, fingerprint, target)) {
+      console.log(`   ♻️  ${deck.id} (inchangé)`);
+      reused += 1;
+      continue;
+    }
+
     console.log(`   ➡️  ${deck.id}`);
     buildDeck(deck, out);
+    if (fingerprint) storeDeck(deck, fingerprint, target);
   }
 
+  if (cache) {
+    pruneCache(keep);
+    await saveSharedCache();
+  }
+
+  const minutes = ((Date.now() - started) / 60000).toFixed(1);
+  console.log(
+    `   ${reused}/${decks.length} repris du cache, ${minutes} min de diaporamas`,
+  );
   console.log(`✅ Site complet dans ${out}`);
 }
