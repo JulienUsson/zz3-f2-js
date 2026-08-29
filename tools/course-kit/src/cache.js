@@ -7,6 +7,7 @@ import {
   readdirSync,
   rmSync,
   statSync,
+  utimesSync,
 } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
@@ -82,6 +83,9 @@ export function restoreDeck(deck, fingerprint, target) {
   // qu'on ne restaure pas un build interrompu.
   if (!existsSync(join(entry, "index.html"))) return false;
   cpSync(entry, target, { recursive: true });
+  // Marque l'entrée comme encore utile : c'est ce qui la sauve du nettoyage.
+  const now = new Date();
+  utimesSync(entry, now, now);
   return true;
 }
 
@@ -92,17 +96,27 @@ export function storeDeck(deck, fingerprint, built) {
   cpSync(built, entry, { recursive: true });
 }
 
+/** Au-delà de ce délai sans être servie, une entrée est jetée. */
+const MAX_AGE_DAYS = 7;
+
 /**
- * Supprime les entrées qui ne correspondent plus à aucun diaporama actuel,
- * pour que le cache ne grossisse pas à chaque modification.
+ * Nettoie le cache sans le vider.
+ *
+ * On garde les entrées du build courant, et celles servies récemment : sur
+ * Netlify, les previews de PR et `master` partagent le même cache, et ne garder
+ * que le build courant les ferait s'évincer mutuellement à chaque bascule de
+ * branche. Les entrées d'une branche abandonnée, elles, finissent par expirer.
  */
 export function pruneCache(keep) {
   if (!existsSync(CACHE_DIR)) return 0;
   const wanted = new Set(keep);
+  const deadline = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000;
   let removed = 0;
   for (const name of readdirSync(CACHE_DIR)) {
     if (wanted.has(name)) continue;
-    rmSync(join(CACHE_DIR, name), { recursive: true, force: true });
+    const path = join(CACHE_DIR, name);
+    if (statSync(path).mtimeMs >= deadline) continue;
+    rmSync(path, { recursive: true, force: true });
     removed += 1;
   }
   return removed;
