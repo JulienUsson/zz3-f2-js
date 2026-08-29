@@ -3,6 +3,7 @@ layout: exercise
 title: Limiter la concurrence
 duration: 15
 difficulty: 3
+bonus: true
 goal: Le morceau de bravoure de la séance.
 ---
 

@@ -21,7 +21,34 @@ elle remonte toute la pile — et le programme s'arrête.
 
 ---
 
-## Exercice 2 — Première promesse
+## Exercice 2 — Devinez l'ordre
+
+```
+A
+C
+F
+D
+E
+B
+```
+
+* **A** — code synchrone, exécuté immédiatement.
+* **C** — le corps d'une fonction `async` s'exécute **synchronement** jusqu'au
+  premier `await`. `go()` n'est pas « mise de côté » : elle démarre tout de suite.
+* **F** — au premier `await`, `go()` rend la main. Le reste du fichier finit
+  de s'exécuter **avant** la suite de `go()`.
+* **D** puis **E** — la pile est vide, on vide la file des microtâches, dans
+  l'ordre où elles ont été empilées : celle du `await null` d'abord, celle du
+  `.then()` ensuite.
+* **B** — les macrotâches en dernier. `setTimeout(..., 0)` ne veut pas dire
+  « maintenant », mais « dès qu'il n'y a plus rien d'autre à faire ».
+
+Le point le plus souvent raté est **C avant F** : `async` ne rend pas une
+fonction « parallèle », il lui donne juste le droit de faire des pauses.
+
+---
+
+## Exercice 3 — Première promesse
 
 ```javascript
 const URL =
@@ -48,7 +75,7 @@ décodée : `axios.get(URL).then((response) => response.data)`.
 
 ---
 
-## Exercice 3 — Emballer un callback
+## Exercice 4 — Emballer un callback
 
 ```javascript
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -71,7 +98,7 @@ revoit plus jamais son callback.
 
 ---
 
-## Exercice 4 — Le même, en async/await
+## Exercice 5 — Le même, en async/await
 
 ```javascript
 const URL =
@@ -91,7 +118,45 @@ version précédente : `await` ne bloque que la fonction où il se trouve.
 
 ---
 
-## Exercice 5 — Quand la requête échoue
+## Exercice 6 — La chaîne cassée
+
+Le mot manquant est `return` :
+
+```javascript
+function versionThen() {
+  return new Promise((resolve, reject) => {
+    fetchUser()
+      .then((user) => {
+        return fetchPosts(user).then((posts) => resolve(posts))
+        //  ^^^^^^
+      })
+      .catch(reject)
+  })
+}
+```
+
+Sans ce `return`, la promesse rendue par `fetchPosts(user)` n'est raccrochée à
+**aucune** chaîne. Son rejet n'atteint donc jamais le `.catch(reject)` : la
+promesse extérieure reste `pending` pour toujours, et l'erreur ressort en
+`unhandledRejection`.
+
+Avec le `return`, `.then()` attend la promesse retournée et propage son rejet
+au maillon suivant — c'est-à-dire au `.catch()`.
+
+C'est **le** bug numéro un des promesses en vrai code : une requête qui ne
+répond jamais, sans message d'erreur. La règle : *dans un `.then()`, on retourne
+toujours la promesse qu'on démarre.*
+
+D'ailleurs, ici le `new Promise(...)` est inutile — `fetchUser()` en est déjà
+une. La version honnête tient en deux lignes :
+
+```javascript
+const versionThen = () => fetchUser().then((user) => fetchPosts(user))
+```
+
+---
+
+## Exercice 7 — Quand la requête échoue
 
 ```javascript
 async function loadUsers() {
@@ -124,7 +189,7 @@ fetch(URL)
 
 ---
 
-## Exercice 6 — Deux requêtes en parallèle
+## Exercice 8 — Deux requêtes en parallèle
 
 ```javascript
 const BASE =
@@ -147,7 +212,7 @@ async function countAllUsers() {
 
 ---
 
-## Exercice 7 — Abandonner au bout de N secondes
+## Exercice 9 — Abandonner au bout de N secondes
 
 ```javascript
 function fetchWithTimeout(promise, ms) {
@@ -164,7 +229,7 @@ un [AbortController](https://developer.mozilla.org/fr/docs/Web/API/AbortControll
 
 ---
 
-## Exercice 8 — Compter les succès et les échecs
+## Exercice 10 — Compter les succès et les échecs
 
 ```javascript
 async function report() {
@@ -184,7 +249,7 @@ Avec `Promise.all`, le premier échec rejette tout : on perd les deux succès.
 
 ---
 
-## Exercice 9 — Réessayer en cas d'échec
+## Exercice 11 — Réessayer en cas d'échec
 
 ```javascript
 async function retry(fn, attempts) {
@@ -204,7 +269,7 @@ n'a pas besoin d'être transporté d'appel en appel.
 
 ---
 
-## Exercice 10 — Espacer les tentatives
+## Exercice 12 — Espacer les tentatives
 
 ```javascript
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -228,7 +293,7 @@ et répartit les clients qui réessaient tous en même temps.
 
 ---
 
-## Exercice 11 — Limiter la concurrence
+## Exercice 13 — Limiter la concurrence
 
 ```javascript
 async function parallelLimit(tasks, limit) {
