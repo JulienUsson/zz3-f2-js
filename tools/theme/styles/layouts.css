@@ -306,19 +306,22 @@
 
 .slidev-layout.quiz {
   --quiz-ink: #1f2933;
-  background-color: #f5f7ff;
+  background-color: #fffdf3;
   display: flex;
   flex-direction: column;
   height: 100%;
   gap: 16px;
-  border-top: 10px solid #4a63d8;
+  /* Bandeau plein, là où l'exercice n'a qu'un filet : c'est ce qui distingue
+     les deux moments, sans sortir du jaune du reste du cours.
+     Sa hauteur contient les liens de navigation (10 px du haut, ~25 px de
+     haut) sans qu'ils débordent. */
+  border-top: 44px solid var(--slidev-theme-primary);
   color: var(--quiz-ink);
 }
 
 .slidev-layout.quiz .quiz-badge {
   display: inline-block;
-  background-color: #4a63d8;
-  color: #fff;
+  background-color: var(--slidev-theme-primary);
   border-radius: 999px;
   padding: 2px 14px;
   font-size: 0.75rem;
@@ -352,15 +355,17 @@
   list-style: none;
   background-color: #fff;
   border: 1px solid rgba(31, 41, 51, 0.12);
+  border-left: 5px solid var(--slidev-theme-primary);
   border-radius: 8px;
   padding: 10px 16px;
   margin-bottom: 10px;
   @apply text-xl;
 }
 
-/* La réponse, révélée au clic. */
+/* La réponse, révélée au clic. Le vert reste : il dit « c'est celle-là »,
+   ce n'est pas une couleur de marque. */
 .slidev-layout.quiz .quiz-body blockquote {
-  background-color: #e7f6ec;
+  background-color: #f1f8f3;
   border: 0;
   border-left: 5px solid #2e7d4f;
   border-radius: 6px;
