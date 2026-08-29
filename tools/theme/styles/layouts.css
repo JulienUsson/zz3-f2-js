@@ -168,7 +168,10 @@
   flex-direction: column;
   height: 100%;
   gap: 12px;
-  border-top: 10px solid var(--slidev-theme-primary);
+  /* Même hauteur que le bandeau du quiz : elle contient les liens de
+     navigation (10 px du haut, ~25 px de haut) au lieu de les laisser
+     déborder sur le fond. */
+  border-top: 44px solid var(--slidev-theme-primary);
   color: var(--exercise-ink);
 }
 
