@@ -140,7 +140,19 @@ while ( i < 10 ) {
 for ( let j = 0; j < 10; j++ ) {
     console.log(j)
 }
+
+for ( let value of [1, 2, 3] ) {
+    console.log(value)
+}
 ```
+
+---
+src: ./exercises/01-boucles-additionner-42.md
+---
+
+---
+src: ./exercises/02-boucles-somme.md
+---
 
 ---
 
@@ -168,6 +180,10 @@ console.log(add4(1, 2))
 let add5 = add4
 console.log(add5(1, 2))
 ```
+
+---
+src: ./exercises/03-fonctions-calculatrice.md
+---
 
 ---
 
@@ -203,6 +219,10 @@ console.log(increment())
 * Mais il est **retenu en mémoire**
 
 ---
+src: ./exercises/04-closures-compteur.md
+---
+
+---
 
 # Les tableaux
 
@@ -223,6 +243,9 @@ console.log('[0, 1, 2] === [0, 1, 2]', [0, 1, 2] === [0, 1, 2])
 
 [Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
+---
+src: ./exercises/05-tableaux-afficher.md
+---
 
 ---
 
@@ -244,20 +267,166 @@ console.log('{tutu: "toto"} === {tutu: "toto"}', {tutu: "toto"} === {tutu: "toto
 [Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ---
+src: ./exercises/06-objets-fiche-utilisateur.md
+---
+
+---
 
 # Les collections
+
+Un tableau d'objets : la structure de données que vous manipulerez le plus.
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
 let collection = [ {toto: 3, tutu: 2}, {toto: 5, tutu: 2}, {toto: 7, tutu: 1}]
 console.log(collection[0].toto)
 console.log(collection[0]["toto"])
+console.log(collection.length)
+```
 
+➡️ Les méthodes qui suivent s'appliquent à **tous** les tableaux.
+
+---
+layout: question
+---
+
+Comment transformer un tableau sans écrire de boucle ?
+
+---
+
+# map() — transformer
+
+`map()` retourne un **nouveau** tableau de **même longueur**.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
 let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
 
-let uppercaseUsers = users.map(user => user.name.toUpperCase())
-console.log(JSON.stringify(uppercaseUsers))
-let majorUsers = users.filter(user => user.age >= 18)
-console.log(JSON.stringify(majorUsers))
-let toto = users.find(user => user.name === "toto")
-console.log(JSON.stringify(toto))
+let names = users.map(user => user.name.toUpperCase())
+console.log(names)
+
+// L'original n'a pas bougé
+console.log(users)
 ```
+
+---
+src: ./exercises/07-map-prenoms.md
+---
+
+---
+
+# filter() — sélectionner
+
+`filter()` retourne un **nouveau** tableau, plus court (ou vide).
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+
+let majorUsers = users.filter(user => user.age >= 18)
+console.log(majorUsers)
+```
+
+⚠️ Le callback doit retourner un **booléen**.
+
+---
+src: ./exercises/08-filter-moins-de-26.md
+---
+
+---
+
+# find() — trouver le premier
+
+`find()` retourne **un élément**, pas un tableau, ou `undefined`.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+
+console.log(users.find(user => user.name === "titi"))
+console.log(users.find(user => user.name === "inconnu"))
+```
+
+---
+src: ./exercises/09-find-utilisateur.md
+---
+
+---
+
+# some() et every() — répondre par oui ou non
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+
+console.log('au moins un mineur', users.some(user => user.age < 18))
+console.log('tous majeurs', users.every(user => user.age >= 18))
+```
+
+---
+src: ./exercises/10-some-every.md
+---
+
+---
+
+# sort() et toSorted() — ordonner
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let ages = [31, 24, 22]
+
+// ⚠️ sort() MODIFIE le tableau d'origine
+console.log(ages.toSorted((a, b) => a - b))
+console.log(ages)
+
+console.log(ages.sort((a, b) => a - b))
+console.log(ages)
+```
+
+⚠️ Sans callback, `sort()` compare des **chaînes** : `[1, 5, 10].sort()` ➡️ `[1, 10, 5]`
+
+---
+src: ./exercises/11-sort-par-age.md
+---
+
+---
+
+# reduce() — tout ramener à une valeur
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let numbers = [1, 2, 3, 4]
+
+let sum = numbers.reduce((accumulator, value) => accumulator + value, 0)
+console.log(sum)
+```
+
+* `accumulator` : le résultat construit au fil du parcours
+* `0` : la valeur de départ
+
+---
+src: ./exercises/12-reduce-somme.md
+---
+
+---
+
+# Enchaîner les méthodes
+
+Chaque méthode retourne un tableau ➡️ on peut les **chaîner**.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}, {name: "tutu", age: 16}]
+
+console.log(
+  users
+    .filter(user => user.age >= 18)
+    .map(user => user.name.toUpperCase())
+)
+```
+
+[Toutes les méthodes de Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+---
+src: ./exercises/13-chainage.md
+---
+
+---
+layout: statement
+---
+
+# À vous de jouer
+
+Retrouvez tous les exercices sur [javascript.usson.dev](https://javascript.usson.dev)
