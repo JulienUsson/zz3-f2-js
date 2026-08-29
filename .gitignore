@@ -33,5 +33,8 @@ devenv.local.nix
 # Astro
 .astro/
 
-# Turbo
-.turbo
+# Slidev écrit son index.html à côté du fichier d'entrée
+content/*/index.html
+
+# Couvertures recopiées depuis content/ par le CLI
+tools/course-kit/site/public/preview/

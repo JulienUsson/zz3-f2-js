@@ -1,0 +1,24 @@
+{
+  "name": "course-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Le moteur du cours : ing\u00e8re content/ et produit le site statique.",
+  "bin": {
+    "course": "./bin/course.js"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.9",
+    "@astrojs/sitemap": "^3.6.0",
+    "@slidev/cli": "^52.8.0",
+    "astro": "^5.15.3",
+    "sharp": "^0.34.3",
+    "slidev-addon-javascript": "workspace:*",
+    "slidev-theme-javascript": "workspace:*",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@slidev/types": "^0.47.5",
+    "playwright-chromium": "^1.52.0"
+  }
+}

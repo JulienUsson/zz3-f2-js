@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"exercises">;
+  index: number;
+}
+
+const { entry, index } = Astro.props;
+const { title, duration, difficulty, goal } = entry.data;
+const LEVELS = ["Facile", "Intermédiaire", "Difficile"];
+const slug = entry.id.split("/").pop();
+---
+
+<section class="exercise" id={slug}>
+  <header>
+    <h2>
+      <a href={`#${slug}`}>Exercice {index} — {title}</a>
+    </h2>
+    <p class="meta">
+      <span class="level" title={`Difficulté : ${LEVELS[difficulty - 1]}`}>
+        {LEVELS[difficulty - 1]}
+      </span>
+      {duration && <span class="duration">⏱ {duration} min</span>}
+    </p>
+  </header>
+  {goal && <p class="goal">🎯 {goal}</p>}
+  <slot />
+</section>
+
+<style>
+  .exercise {
+    border-top: 1px solid rgba(var(--gray), 0.3);
+    padding-top: 1.5em;
+    margin-top: 2.5em;
+    text-align: left;
+  }
+  .exercise h2 {
+    margin: 0;
+  }
+  .exercise h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .exercise h2 a:hover {
+    text-decoration: underline;
+  }
+  .meta {
+    display: flex;
+    gap: 1em;
+    margin: 0.4em 0 0;
+    font-size: 0.85em;
+    color: rgb(var(--gray));
+  }
+  .level,
+  .duration {
+    white-space: nowrap;
+  }
+  .goal {
+    font-weight: 600;
+  }
+</style>

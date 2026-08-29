@@ -1,0 +1,93 @@
+# ZZ3F2 — Javascript / Typescript
+
+Le cours en ligne : [javascript.usson.dev](https://javascript.usson.dev)
+
+Chaque séance a un dossier dans `content/`. Le reste du dépôt est de la
+mécanique, et vous n'avez normalement pas à y toucher pour préparer un cours.
+
+## Écrire du contenu
+
+```
+content/javascript-1/
+  module.md      la fiche : titre, ordre, date de correction, puis l'intro du TP
+  slides.md      le diaporama Slidev
+  exercises/     un fichier par exercice
+  correction.md  le corrigé
+  assets/        les images du diaporama
+  preview.png    la vignette affichée sur l'accueil
+```
+
+Seul `module.md` est obligatoire. Tout le reste est déduit des fichiers
+présents : un dossier qui contient un `slides.md` a un diaporama, un dossier
+qui contient des `exercises/` a des exercices. Il n'y a rien à déclarer
+ailleurs.
+
+### Créer une séance
+
+```bash
+mkdir -p content/ma-seance
+cat > content/ma-seance/module.md <<'EOF'
+---
+title: "Ma séance"
+order: 50
+---
+EOF
+```
+
+Elle apparaît immédiatement sur l'accueil, à sa place dans l'ordre.
+
+### Écrire un exercice
+
+Un exercice est un fichier autonome, affiché **deux fois** : intercalé dans le
+diaporama au bon moment, et sur la fiche TP du site. Vous ne l'écrivez qu'une
+fois.
+
+```markdown
+---
+layout: exercise
+title: Additionner 42
+duration: 8
+difficulty: 1
+goal: Parcourir un tableau avec les trois formes de boucle.
+---
+
+Ajouter `42` à chaque élément du tableau.
+
+```javascript {monaco-run} {height:'200px', autorun:false}
+const numbers = [20, 30, 42, 66, 99]
+```
+```
+
+Pour l'intercaler dans le diaporama, ajoutez une slide qui l'importe :
+
+```markdown
+---
+src: ./exercises/01-boucles-additionner-42.md
+---
+```
+
+Les blocs `monaco-run` sont exécutables dans les slides, et rendus en code
+normal sur le site.
+
+## Les commandes
+
+| Commande                   |                                                   |
+| -------------------------- | ------------------------------------------------- |
+| `pnpm dev`                 | le site en local                                   |
+| `pnpm dev javascript-1`    | un diaporama en local                              |
+| `pnpm build`               | tout construire dans `dist/`                       |
+| `pnpm list`                | lister les séances détectées                       |
+| `pnpm thumbnails`          | régénérer les vignettes depuis la première slide   |
+
+## Le reste du dépôt
+
+| Dossier            |                                                                    |
+| ------------------ | ------------------------------------------------------------------ |
+| `tools/course-kit` | le CLI `course` et le site Astro qui rend le contenu                |
+| `tools/theme`      | le thème Slidev (dont le layout `exercise`)                        |
+| `tools/addon`      | l'addon Slidev (configuration de l'éditeur Monaco)                 |
+| `pizzima-starter`  | le squelette du TP fil rouge, récupéré par les élèves              |
+| `api`              | des fixtures JSON, servies par GitHub raw et appelées depuis un TP |
+
+⚠️ Les URL de `api/` sont écrites en dur dans les énoncés et pointent vers
+`master` : déplacer ces fichiers casse le TP pour les élèves en cours de route.
