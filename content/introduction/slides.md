@@ -14,16 +14,17 @@ defaults:
 
 # Présentation du cours
 
-10 séances de 2h, toujours découpées de la même façon :
+10 séances de 2h. Pas d'un côté le cours et de l'autre le TP : les exercices
+sont **intercalés dans les slides**, juste après la notion qu'ils font
+travailler.
 
 | | |
 |---|---|
-| **~5 min** | un petit quiz sur la séance précédente — non noté, on le fait ensemble |
-| **~1h** | le cours, avec les exercices intercalés dans les slides |
-| **~1h** | le TP |
+| **~5 min** | un quiz sur la séance précédente — non noté, on le fait ensemble |
+| **le reste** | on alterne : une notion, un exercice, une notion, un exercice… |
 
-- Séances **1 à 5** — TP indépendants les uns des autres
-- Séances **6 à 9** — TP fil rouge : une seule application, construite morceau par morceau
+- Séances **1 à 5** — chaque séance se suffit à elle-même
+- Séances **6 à 9** — fil rouge : une seule application, construite morceau par morceau
 - Séance **10** — partiel
 
 ⚠️ **Prenez des notes !**

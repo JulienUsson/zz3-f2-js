@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Le moteur du cours : ing\u00e8re content/ et produit le site statique.",
+  "description": "Le moteur du cours : ingère content/ et produit le site statique.",
   "bin": {
     "course": "./bin/course.js"
   },
@@ -13,6 +13,7 @@
     "@netlify/cache-utils": "^6.0.4",
     "@slidev/cli": "^52.8.0",
     "astro": "^5.15.3",
+    "qrcode": "^1.5.4",
     "sharp": "^0.34.3",
     "slidev-addon-javascript": "workspace:*",
     "slidev-theme-javascript": "workspace:*",
