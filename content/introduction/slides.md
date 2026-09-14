@@ -14,9 +14,7 @@ defaults:
 
 # Présentation du cours
 
-10 séances de 2h. Pas d'un côté le cours et de l'autre le TP : les exercices
-sont **intercalés dans les slides**, juste après la notion qu'ils font
-travailler.
+10 séances de 2h.
 
 | | |
 |---|---|
@@ -35,8 +33,7 @@ travailler.
 
 - Les blocs de code des slides sont **exécutables** : modifiez-les, cassez-les, relancez.
 - Tout est en ligne sur [javascript.usson.dev](https://javascript.usson.dev) — slides, exercices, corrections.
-- Les corrections sont publiées **après** la séance : cherchez d'abord.
-- Bloqué plus de 10 minutes sur un exercice ? Appelez-moi. C'est le but d'être là.
+- Les corrections sont publiées **après** la séance.
 
 ---
 
@@ -45,8 +42,6 @@ travailler.
 Création d'une application web
  
 <img alt="Pizzima" src="./assets/pizzima.png" width="200px" />
-
-Un starter vous est fourni : vous codez des fonctionnalités, pas du tooling.
 
 ---
 
@@ -67,9 +62,6 @@ A rajouter dans votre CV 😉
 Partiel de 2h à la **dernière séance**.
 
 **Sans documents**
-
-Il porte sur ce qu'on aura fait ensemble : le quiz de début de séance est le
-meilleur indicateur de ce qui est attendu.
 
 ---
 
