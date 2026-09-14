@@ -1,6 +1,6 @@
 ---
 title: "Javascript 1"
-correctionDate: 2026-01-08
+correctionDate: 2026-09-16
 ---
 
 Ces exercices sont ceux de la séance : ils sont intercalés dans les [slides](/javascript-1/), juste après le concept qu'ils font travailler. Cette page les rassemble pour que vous puissiez les reprendre à votre rythme.

@@ -1,6 +1,6 @@
 ---
 title: "Javascript 4"
-correctionDate: 2026-01-29
+correctionDate: 2026-10-07
 ---
 
 Ces exercices sont ceux de la séance : ils sont intercalés dans les [slides](/javascript-4/), juste après le concept qu'ils font travailler. Cette page les rassemble pour que vous puissiez les reprendre à votre rythme.

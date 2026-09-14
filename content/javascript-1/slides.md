@@ -422,11 +422,3 @@ console.log(
 ---
 src: ./exercises/13-chainage.md
 ---
-
----
-layout: statement
----
-
-# À vous de jouer
-
-Retrouvez tous les exercices sur [javascript.usson.dev](https://javascript.usson.dev)
