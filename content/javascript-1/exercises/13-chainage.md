@@ -1,7 +1,7 @@
 ---
 layout: exercise
 title: Tout enchaîner en une expression
-duration: 8
+duration: 6
 difficulty: 3
 goal: Écrire une transformation complète en une seule expression.
 ---
@@ -14,7 +14,7 @@ const users = [
   { name: "Louise", age: 24 },
   { name: "Bastien", age: 22 },
   { name: "Alexandre", age: 42 },
-]
+];
 
 // Attendu : ["LOUISE", "BASTIEN"]
 ```

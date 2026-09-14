@@ -1,7 +1,7 @@
 ---
 layout: exercise
 title: Trier par âge
-duration: 8
+duration: 6
 difficulty: 2
 goal: Trier sans casser le tableau d'origine.
 ---
@@ -13,7 +13,7 @@ const users = [
   { name: "Julien", age: 31 },
   { name: "Louise", age: 24 },
   { name: "Bastien", age: 22 },
-]
+];
 
 // Attendu : Bastien (22), Louise (24), Julien (31)
 ```

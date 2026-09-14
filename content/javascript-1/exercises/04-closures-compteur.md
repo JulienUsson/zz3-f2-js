@@ -1,7 +1,7 @@
 ---
 layout: exercise
 title: Une closure qui compte
-duration: 8
+duration: 6
 difficulty: 2
 goal: Comprendre qu'une fonction retient l'environnement dans lequel elle est née.
 ---
@@ -13,10 +13,10 @@ function createCounter() {
   // à vous
 }
 
-const a = createCounter()
-const b = createCounter()
-console.log(a(), a(), a()) // 1 2 3
-console.log(b())           // 1
+const a = createCounter();
+const b = createCounter();
+console.log(a(), a(), a()); // 1 2 3
+console.log(b()); // 1
 ```
 
 Bonus : `createAdder(n)` retourne une fonction qui ajoute `n` à son argument.
