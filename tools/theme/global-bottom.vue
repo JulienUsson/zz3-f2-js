@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useNav } from '@slidev/client'
+import MonacoTools from './components/MonacoTools.vue'
 
 const { slides, isPrintMode } = useNav()
 
@@ -26,6 +27,9 @@ const hasExercises = computed(() =>
 </script>
 
 <template>
+  <!-- Rien à l'écran : équipe les éditeurs de code d'un bouton plein écran. -->
+  <MonacoTools v-if="!isPrintMode" />
+
   <nav v-if="moduleId && !isPrintMode" class="course-nav">
     <a href="/" title="Toutes les séances">🏠 Accueil</a>
     <a v-if="hasExercises" :href="`/practices/${moduleId}/`" title="La fiche de TP">

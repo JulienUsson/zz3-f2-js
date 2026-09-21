@@ -384,3 +384,55 @@
 .slidev-layout.quiz .quiz-body blockquote p + p {
   margin-top: 8px;
 }
+
+/* ------------------------------------------------------------------ *
+ * Les éditeurs de code des slides
+ * ------------------------------------------------------------------ */
+
+/* Slidev pose sa barre d'outils en haut à droite de l'éditeur, sans fond et à
+   75 % d'opacité : sur le gris très clair du bloc de code, le petit triangle
+   « exécuter » passait inaperçu. On en fait des boutons visibles. */
+.slidev-monaco-container .absolute.right-1 {
+  gap: 4px;
+}
+
+.slidev-monaco-container .slidev-icon-btn {
+  opacity: 1;
+  width: auto;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid rgba(31, 41, 51, 0.3);
+  border-radius: 6px;
+  background-color: var(--slidev-theme-primary);
+  color: #1f2933;
+  /* Le code passe sous la barre quand la première ligne est longue : une
+     ombre portée garde les boutons lisibles par-dessus. */
+  box-shadow: 0 1px 4px rgba(31, 41, 51, 0.25);
+}
+
+.slidev-monaco-container .slidev-icon-btn:hover {
+  background-color: #fff;
+}
+
+.course-plein-ecran-btn {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Plein écran, via l'API du navigateur (voir MonacoTools.vue) : l'élément
+   est sorti du flux, donc insensible à la mise à l'échelle des slides. */
+.slidev-monaco-container:fullscreen {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #fff;
+}
+
+.slidev-monaco-container:fullscreen .slidev-monaco-container-inner {
+  flex: 1;
+  min-height: 0;
+  /* Slidev fixe la hauteur en ligne depuis le markdown : en plein écran,
+     c'est la place disponible qui commande. */
+  height: auto !important;
+}
