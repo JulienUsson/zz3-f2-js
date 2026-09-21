@@ -13,12 +13,6 @@ NODE_VERSION = "22"
 [context.deploy-preview]
   ignore = "exit 0"
 
-[[redirects]]
-from = "/.well-known/*"
-to = "/.well-known/:splat"
-status = 200
-
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+# Les redirections vivent dans `dist/_redirects`, écrit par course-kit : il
+# doit lister une règle par diaporama, et elles doivent passer avant
+# l'attrape-tout du site. Les garder ici aussi ferait deux sources d'ordre.
