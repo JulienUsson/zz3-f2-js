@@ -78,6 +78,10 @@
 
   .slidev-monaco-container {
     width: 600px;
+    /* Comme les images juste au-dessus : sans ces marges, le bloc de code
+       restait collé à gauche alors que tout le reste de la slide est centré. */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

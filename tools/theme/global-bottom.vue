@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useNav } from '@slidev/client'
+import CorrectionOverlay from './components/CorrectionOverlay.vue'
 import MonacoTools from './components/MonacoTools.vue'
 
 const { slides, isPrintMode } = useNav()
@@ -29,6 +30,9 @@ const hasExercises = computed(() =>
 <template>
   <!-- Rien à l'écran : équipe les éditeurs de code d'un bouton plein écran. -->
   <MonacoTools v-if="!isPrintMode" />
+
+  <!-- Alt + C : la correction de l'exercice courant, par-dessus la slide. -->
+  <CorrectionOverlay />
 
   <nav v-if="moduleId && !isPrintMode" class="course-nav">
     <a href="/" title="Toutes les séances">🏠 Accueil</a>
