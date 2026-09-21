@@ -2,6 +2,7 @@
   "name": "slidev-theme-javascript",
   "version": "0.0.1",
   "slidev": {
+    "colorSchema": "light",
     "defaults": {
       "fonts": {
         "mono": "Roboto Mono",
