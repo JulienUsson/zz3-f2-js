@@ -88,17 +88,7 @@ ont chacun leur propre `count`.
 
 ---
 
-## Exercice 5 — Afficher chaque couleur
-
-```javascript
-const colors = ["blue", "red", "green", "yellow", "cyan"];
-
-colors.forEach((color) => console.log(color));
-```
-
----
-
-## Exercice 6 — Manipuler un objet
+## Exercice 5 — Manipuler un objet
 
 ```javascript
 const user = { name: "Julien", age: 31, city: "Clermont-Ferrand" };
@@ -109,6 +99,16 @@ user.job = "Développeur";
 
 console.log(Object.keys(user)); // ["name", "age", "city", "job"]
 console.log(Object.values(user)); // ["Julien", 31, "Clermont-Ferrand", "Développeur"]
+```
+
+---
+
+## Exercice 6 — Afficher chaque couleur
+
+```javascript
+const colors = ["blue", "red", "green", "yellow", "cyan"];
+
+colors.forEach((color) => console.log(color));
 ```
 
 ---

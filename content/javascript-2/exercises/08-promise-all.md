@@ -18,4 +18,4 @@ async function countAllUsers() {
 countAllUsers()
 ```
 
-Mesurez avec `console.time()` / `console.timeEnd()`, puis comparez avec deux `await` à la suite. Combien de temps gagnez-vous ?
+Mesurez avec `performance.now()`, comme sur la slide « Mesurer la différence », puis comparez avec deux `await` à la suite. Combien de temps gagnez-vous ?

@@ -128,6 +128,27 @@ console.log('i === 0', i === 0)
 
 ---
 
+# Les tableaux
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let tableau = [1, 2, "toto", "tutu", 3.4]
+console.log('tableau.length', tableau.length) 
+console.log('tableau[0]', tableau[0]) 
+console.log('tableau.at(-1)', tableau.at(-1)) 
+
+tableau.push('titi'); console.log(tableau)
+tableau.pop(); console.log(tableau)
+
+console.log('tableau.indexOf("toto")', tableau.indexOf("toto"))
+console.log('tableau.includes("toto")', tableau.includes("toto"))
+
+console.log('[0, 1, 2] === [0, 1, 2]', [0, 1, 2] === [0, 1, 2])
+```
+
+[Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+---
+
 # Les boucles
 
 ```javascript {monaco} {height:'auto'}
@@ -224,31 +245,6 @@ src: ./exercises/04-closures-compteur.md
 
 ---
 
-# Les tableaux
-
-```javascript {monaco-run} {height:'auto', autorun:false}
-let tableau = [1, 2, "toto", "tutu", 3.4]
-console.log('tableau.length', tableau.length) 
-console.log('tableau[0]', tableau[0]) 
-console.log('tableau.at(-1)', tableau.at(-1)) 
-
-tableau.push('titi'); console.log(tableau)
-tableau.pop(); console.log(tableau)
-
-console.log('tableau.indexOf("toto")', tableau.indexOf("toto"))
-console.log('tableau.includes("toto")', tableau.includes("toto"))
-
-console.log('[0, 1, 2] === [0, 1, 2]', [0, 1, 2] === [0, 1, 2])
-```
-
-[Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-
----
-src: ./exercises/05-tableaux-afficher.md
----
-
----
-
 # Les objets
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
@@ -257,6 +253,10 @@ let dictionnaire = {tutu: "toto", titi: 1, [key]: "tutu", key}
 console.log(JSON.stringify(dictionnaire))
 console.log(dictionnaire.titi)
 console.log(dictionnaire[key])
+
+// Ajouter ou modifier une propriété
+dictionnaire.nouvelle = 42
+console.log(dictionnaire.nouvelle)
 
 console.log(Object.keys(dictionnaire));
 console.log(Object.values(dictionnaire));
@@ -267,7 +267,7 @@ console.log('{tutu: "toto"} === {tutu: "toto"}', {tutu: "toto"} === {tutu: "toto
 [Et d'autres methodes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ---
-src: ./exercises/06-objets-fiche-utilisateur.md
+src: ./exercises/05-objets-fiche-utilisateur.md
 ---
 
 ---
@@ -290,6 +290,31 @@ layout: question
 ---
 
 Comment transformer un tableau sans écrire de boucle ?
+
+---
+
+# forEach() — faire quelque chose pour chaque élément
+
+La plus proche d'une boucle : elle parcourt le tableau et appelle **votre
+fonction** sur chaque élément. Elle ne retourne rien.
+
+```javascript {monaco-run} {height:'auto', autorun:false}
+let users = [{name: "toto", age: 18}, {name: "titi", age: 22}]
+
+users.forEach(user => console.log(user.name))
+
+// La même chose avec for of
+for (let user of users) {
+  console.log(user.name)
+}
+```
+
+➡️ Passer une fonction en argument, c'est ce que font **toutes** les méthodes
+qui suivent.
+
+---
+src: ./exercises/06-foreach-couleurs.md
+---
 
 ---
 
