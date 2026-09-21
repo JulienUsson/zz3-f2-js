@@ -150,33 +150,29 @@ ce temps-là ? »**
 
 <img src="./assets/async.png" alt="Async" width="520px" />
 
-Le thread exécute la pile. Quand elle est vide, il prend la tâche suivante :
-d'abord les **microtâches** (promesses), puis les **macrotâches** (`setTimeout`, événements).
+Le thread exécute la pile. Quand elle est vide — et seulement à ce
+moment-là — il prend la tâche suivante dans la file : un `setTimeout` arrivé à
+terme, un clic, une réponse du réseau.
 
 ---
 
 # Prédisez, puis exécutez
 
-Dans quel ordre ces quatre lignes vont-elles s'afficher ?
+Dans quel ordre ces trois lignes vont-elles s'afficher ?
 
 ```javascript {monaco-run} {height:'auto', autorun:false}
 console.log("1")
 setTimeout(() => console.log("2"), 0)
-Promise.resolve().then(() => console.log("3"))
-console.log("4")
+console.log("3")
 ```
 
 <v-click>
 
-> `1` `4` `3` `2` — le code synchrone d'abord, **en entier**. Puis les microtâches.
-> Et enfin les macrotâches : `setTimeout(..., 0)` n'est pas « tout de suite »,
-> c'est « dès que le thread n'a plus rien d'autre à faire ».
+> `1` `3` `2` — tout le code synchrone d'abord, **en entier**, et la tâche
+> mise en file ensuite. `setTimeout(..., 0)` ne veut pas dire « tout de
+> suite », mais « dès que le thread n'a plus rien d'autre à faire ».
 
 </v-click>
-
----
-src: ./exercises/02-ordre-execution.md
----
 
 ---
 
@@ -295,7 +291,7 @@ Promise.resolve(2)
 ℹ️ Un seul `.catch()` en fin de chaîne attrape l'erreur de **n'importe quel** maillon.
 
 ---
-src: ./exercises/03-promesses-then.md
+src: ./exercises/02-promesses-then.md
 ---
 
 ---
@@ -319,7 +315,7 @@ function customPromiseReadFile(path) {
 ```
 
 ---
-src: ./exercises/04-callback-vers-promesse.md
+src: ./exercises/03-callback-vers-promesse.md
 ---
 
 ---
@@ -347,8 +343,19 @@ function getPosts() {
 ⚠️ Le `return` de la deuxième version n'est pas décoratif : c'est lui qui
 raccroche la promesse interne à la chaîne. Sans lui, l'erreur s'échappe.
 
+Deux détails qui décident de l'ordre d'exécution :
+
+* le corps d'une fonction `async` s'exécute **tout de suite**, de façon
+  synchrone, jusqu'au premier `await` ;
+* ce qui suit un `await` repart en **microtâche**, servie avant les
+  `setTimeout` en attente.
+
 ---
-src: ./exercises/05-async-await.md
+src: ./exercises/04-async-await.md
+---
+
+---
+src: ./exercises/05-ordre-execution.md
 ---
 
 ---

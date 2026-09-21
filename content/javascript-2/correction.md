@@ -21,34 +21,7 @@ elle remonte toute la pile — et le programme s'arrête.
 
 ---
 
-## Exercice 2 — Devinez l'ordre
-
-```
-A
-C
-F
-D
-E
-B
-```
-
-* **A** — code synchrone, exécuté immédiatement.
-* **C** — le corps d'une fonction `async` s'exécute **synchronement** jusqu'au
-  premier `await`. `go()` n'est pas « mise de côté » : elle démarre tout de suite.
-* **F** — au premier `await`, `go()` rend la main. Le reste du fichier finit
-  de s'exécuter **avant** la suite de `go()`.
-* **D** puis **E** — la pile est vide, on vide la file des microtâches, dans
-  l'ordre où elles ont été empilées : celle du `await null` d'abord, celle du
-  `.then()` ensuite.
-* **B** — les macrotâches en dernier. `setTimeout(..., 0)` ne veut pas dire
-  « maintenant », mais « dès qu'il n'y a plus rien d'autre à faire ».
-
-Le point le plus souvent raté est **C avant F** : `async` ne rend pas une
-fonction « parallèle », il lui donne juste le droit de faire des pauses.
-
----
-
-## Exercice 3 — Première promesse
+## Exercice 2 — Première promesse
 
 ```javascript
 const URL =
@@ -75,7 +48,7 @@ décodée : `axios.get(URL).then((response) => response.data)`.
 
 ---
 
-## Exercice 4 — Emballer un callback
+## Exercice 3 — Emballer un callback
 
 ```javascript
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -98,7 +71,7 @@ revoit plus jamais son callback.
 
 ---
 
-## Exercice 5 — Le même, en async/await
+## Exercice 4 — Le même, en async/await
 
 ```javascript
 const URL =
@@ -115,6 +88,33 @@ showFrenchUsers();
 
 Le code se lit de haut en bas, mais il est **exactement** aussi asynchrone que la
 version précédente : `await` ne bloque que la fonction où il se trouve.
+
+---
+
+## Exercice 5 — Devinez l'ordre
+
+```
+A
+C
+F
+D
+E
+B
+```
+
+* **A** — code synchrone, exécuté immédiatement.
+* **C** — le corps d'une fonction `async` s'exécute **synchronement** jusqu'au
+  premier `await`. `go()` n'est pas « mise de côté » : elle démarre tout de suite.
+* **F** — au premier `await`, `go()` rend la main. Le reste du fichier finit
+  de s'exécuter **avant** la suite de `go()`.
+* **D** puis **E** — la pile est vide, on vide la file des microtâches, dans
+  l'ordre où elles ont été empilées : celle du `await null` d'abord, celle du
+  `.then()` ensuite.
+* **B** — les macrotâches en dernier. `setTimeout(..., 0)` ne veut pas dire
+  « maintenant », mais « dès qu'il n'y a plus rien d'autre à faire ».
+
+Le point le plus souvent raté est **C avant F** : `async` ne rend pas une
+fonction « parallèle », il lui donne juste le droit de faire des pauses.
 
 ---
 
