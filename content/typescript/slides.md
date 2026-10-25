@@ -89,7 +89,7 @@ console.log(add(1, "2"))
 
 # La solution: TypeScript
 
-```typescript {monaco} {height:'auto', autorun:false}
+```typescript {monaco-run} {height:'auto', autorun:false}
 function add(a: number, b: number) {
   return a + b;
 }
@@ -215,10 +215,13 @@ src: ./exercises/02-tableaux-tuples.md
 
 # Any: le type qui désactive le typage
 
-```typescript {monaco} {height:'auto'}
+```typescript {monaco-run} {height:'auto', autorun:false}
 let data: any = 42;
 data = "hello";
 data = {};
+
+// TypeScript ne dit rien. Le navigateur, lui, a un avis.
+console.log(data.toUpperCase());
 ```
 
 * ⚠️ Désactive totalement TypeScript
@@ -228,9 +231,10 @@ data = {};
 
 # Unknown (le type sécurisé)
 
-```typescript {monaco} {height:'auto'}
-let data: unknown;
+```typescript {monaco-run} {height:'auto', autorun:false}
+let data: unknown = "hello";
 
+// Retirez le `if` : TypeScript refuse de compiler.
 if (typeof data === "string") {
   console.log(data.toUpperCase());
 }
@@ -247,7 +251,7 @@ src: ./exercises/03-any-unknown.md
 
 # Typage des fonctions
 
-```typescript {monaco} {height:'auto'}
+```typescript {monaco-run} {height:'auto', autorun:false}
 function add(a: number, b: number): number {
   return a + b;
 }
@@ -259,6 +263,10 @@ let multiply = (a: number, b: number): number => {
 function greet(name?: string) {
   console.log(`Hello ${name ?? "World"}`);
 }
+
+console.log(add(2, 3), multiply(2, 3));
+greet();
+greet("Julien");
 ```
 
 ---
@@ -356,10 +364,15 @@ src: ./exercises/06-union-discriminee.md
 * sans perdre le typage
 * sans `any`
 
-```typescript {monaco} {height:'auto'}
+```typescript {monaco-run} {height:'auto', autorun:false}
 function identity<T>(arg: T): T {
   return arg;
 }
+
+// Survolez `texte` et `nombre` : deux types différents, une seule fonction.
+const texte = identity("bonjour");
+const nombre = identity(42);
+console.log(texte, nombre);
 ```
 
 ---
