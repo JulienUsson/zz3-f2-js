@@ -1,0 +1,126 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+
+const EXEMPLE = `const users = [
+  { name: "Julien", age: 31 },
+  { name: "Louise", age: 24 },
+]
+
+console.log(users.map((user) => user.name))
+`;
+---
+
+<html lang="fr">
+  <head>
+    <BaseHead
+      title={`Playground — ${SITE_TITLE}`}
+      description="Un bac à sable pour essayer du Javascript ou du Typescript, sans rien installer."
+    />
+    <style>
+      main {
+        width: 1000px;
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+      }
+      h1 {
+        text-align: center;
+      }
+      .intro {
+        text-align: center;
+        color: rgb(var(--gray));
+      }
+      #pg-code {
+        width: 100%;
+        min-height: 320px;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid rgb(var(--gray-light));
+        border-radius: 8px 8px 0 0;
+        background-color: #f6f6f6;
+        font-family: ui-monospace, monospace;
+        font-size: 0.9em;
+        line-height: 1.5;
+        resize: vertical;
+      }
+      .pg-barre {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        padding: 8px;
+        border: 1px solid rgb(var(--gray-light));
+        border-top: 0;
+        border-radius: 0 0 8px 8px;
+        background-color: rgba(var(--gray-light), 0.4);
+      }
+      .pg-barre button,
+      .pg-barre select {
+        padding: 6px 12px;
+        border: 1px solid rgb(var(--gray-light));
+        border-radius: 6px;
+        background-color: #fff;
+        font: inherit;
+        font-size: 0.9em;
+        cursor: pointer;
+      }
+      .pg-barre button:hover:not(:disabled) {
+        background-color: rgba(var(--gray-light), 0.6);
+      }
+      .pg-barre button:disabled {
+        opacity: 0.5;
+        cursor: progress;
+      }
+      #pg-run {
+        background-color: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+        font-weight: 700;
+      }
+      .pg-astuce {
+        margin-left: auto;
+        color: rgb(var(--gray));
+        font-size: 0.85em;
+      }
+      #pg-sortie {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <h1>Playground</h1>
+      <p class="intro">
+        Pour essayer une idée sans ouvrir de projet. Le code s'exécute dans
+        votre navigateur, rien n'est envoyé nulle part.
+      </p>
+
+      <textarea id="pg-code" spellcheck="false" aria-label="Code à exécuter"
+        >{EXEMPLE}</textarea
+      >
+
+      <div class="pg-barre">
+        <button type="button" id="pg-run">▶ Exécuter</button>
+        <button type="button" id="pg-format">⌨ Formater</button>
+        <select id="pg-langage" aria-label="Langage">
+          <option value="javascript">Javascript</option>
+          <option value="typescript">Typescript</option>
+        </select>
+        <button type="button" id="pg-vider">🗑 Vider</button>
+        <span class="pg-astuce">Ctrl + Entrée pour exécuter</span>
+      </div>
+
+      <div id="pg-sortie" class="runnable-output" hidden></div>
+    </main>
+    <Footer />
+
+    <script>
+      import "../scripts/playground";
+    </script>
+  </body>
+</html>

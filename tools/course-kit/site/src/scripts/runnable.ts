@@ -2,44 +2,10 @@
  * Rend exécutables, sur les fiches de TP, les blocs que les slides exécutent
  * déjà — ceux marqués `{monaco-run}` dans les exercices.
  *
- * Le code tourne dans un Web Worker, pour deux raisons :
- *   - une boucle infinie ne fige pas l'onglet, on peut tuer le worker ;
- *   - le code de l'élève n'a pas accès au DOM de la page.
+ * L'exécution elle-même vit dans `runner.ts`, partagée avec le playground.
  */
-
-/** Au-delà, on considère que le code ne s'arrêtera pas tout seul. */
-const TIMEOUT_MS = 10_000;
-
-const WORKER_SOURCE = `
-const format = (value) => {
-  if (typeof value === "string") return value;
-  if (value instanceof Error) return value.stack || String(value);
-  try { return JSON.stringify(value); } catch { return String(value); }
-};
-
-for (const level of ["log", "info", "warn", "error"]) {
-  console[level] = (...args) =>
-    self.postMessage({ type: "log", level, text: args.map(format).join(" ") });
-}
-
-self.onmessage = async ({ data }) => {
-  try {
-    // Enveloppé dans une fonction async : les exercices utilisent await.
-    await new Function("return (async () => {\\n" + data + "\\n})()")();
-    self.postMessage({ type: "done" });
-  } catch (error) {
-    self.postMessage({ type: "error", text: format(error) });
-  }
-};
-`;
-
-function createWorker(): Worker {
-  const blob = new Blob([WORKER_SOURCE], { type: "text/javascript" });
-  const url = URL.createObjectURL(blob);
-  const worker = new Worker(url);
-  URL.revokeObjectURL(url);
-  return worker;
-}
+import { formater } from "./outils-code";
+import { executer, type Execution } from "./runner";
 
 function setup(pre: HTMLElement) {
   const code = pre.querySelector("code");
@@ -47,8 +13,7 @@ function setup(pre: HTMLElement) {
 
   const source = code.textContent ?? "";
   let current = source;
-  let worker: Worker | undefined;
-  let timer: number | undefined;
+  let execution: Execution | undefined;
 
   const container = document.createElement("div");
   container.className = "runnable";
@@ -77,6 +42,10 @@ function setup(pre: HTMLElement) {
   edit.type = "button";
   edit.textContent = "✏️ Modifier";
 
+  const format = document.createElement("button");
+  format.type = "button";
+  format.textContent = "⌨ Formater";
+
   const reset = document.createElement("button");
   reset.type = "button";
   reset.textContent = "↺ Réinitialiser";
@@ -86,7 +55,7 @@ function setup(pre: HTMLElement) {
   output.className = "runnable-output";
   output.hidden = true;
 
-  toolbar.append(run, edit, reset);
+  toolbar.append(run, edit, format, reset);
   container.append(editor, toolbar, output);
 
   function print(text: string, level = "log") {
@@ -97,16 +66,14 @@ function setup(pre: HTMLElement) {
     output.append(line);
   }
 
-  function stop() {
-    worker?.terminate();
-    worker = undefined;
-    if (timer) clearTimeout(timer);
+  function fin() {
+    execution = undefined;
     run.textContent = "▶ Exécuter";
   }
 
   run.addEventListener("click", () => {
-    if (worker) {
-      stop();
+    if (execution) {
+      execution.arreter();
       print("Arrêté.", "warn");
       return;
     }
@@ -114,22 +81,23 @@ function setup(pre: HTMLElement) {
     output.replaceChildren();
     output.hidden = false;
     run.textContent = "⏹ Arrêter";
+    execution = executer(current, ({ texte, niveau }) => print(texte, niveau), fin);
+  });
 
-    worker = createWorker();
-    worker.onmessage = ({ data }) => {
-      if (data.type === "log") print(data.text, data.level);
-      else if (data.type === "error") print(data.text, "error");
-      else stop();
-    };
-    worker.postMessage(current);
-
-    timer = window.setTimeout(() => {
-      stop();
-      print(
-        `Arrêté après ${TIMEOUT_MS / 1000} s — une boucle qui ne se termine pas ?`,
-        "error",
-      );
-    }, TIMEOUT_MS);
+  /** Met le code en forme, qu'on soit en train de l'éditer ou de le lire. */
+  format.addEventListener("click", async () => {
+    format.disabled = true;
+    try {
+      current = await formater(current, "javascript");
+      editor.value = current;
+      code.textContent = current;
+      reset.hidden = current === source;
+    } catch (erreur) {
+      output.replaceChildren();
+      print(String(erreur), "error");
+    } finally {
+      format.disabled = false;
+    }
   });
 
   edit.addEventListener("click", () => {

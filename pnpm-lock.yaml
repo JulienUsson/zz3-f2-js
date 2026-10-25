@@ -41,6 +41,9 @@ importers:
       astro:
         specifier: ^5.15.3
         version: 5.15.4(@types/node@25.0.9)(jiti@2.6.1)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
+      prettier:
+        specifier: ^3.9.10
+        version: 3.9.10
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
@@ -53,6 +56,9 @@ importers:
       slidev-theme-javascript:
         specifier: workspace:*
         version: link:../theme
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
       vue:
         specifier: ^3.5.22
         version: 3.5.24(typescript@5.9.3)
@@ -2774,8 +2780,8 @@ packages:
   pptxgenjs@4.0.1:
     resolution: {integrity: sha512-TeJISr8wouAuXw4C1F/mC33xbZs/FuEG6nH9FG1Zj+nuPcGMP5YRHl6X+j3HSUnS1f3at6k75ZZXPMZlA5Lj9A==}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4608,7 +4614,7 @@ snapshots:
       monaco-editor: 0.54.0
       nanotar: 0.2.0
       pptxgenjs: 4.0.1
-      prettier: 3.6.2
+      prettier: 3.9.10
       recordrtc: 5.6.2
       shiki: 3.15.0
       shiki-magic-move: 1.2.1(shiki@3.15.0)(vue@3.5.24(typescript@5.9.3))
@@ -7212,7 +7218,7 @@ snapshots:
       image-size: 1.2.1
       jszip: 3.10.1
 
-  prettier@3.6.2: {}
+  prettier@3.9.10: {}
 
   prism-theme-vars@0.2.5: {}
 
