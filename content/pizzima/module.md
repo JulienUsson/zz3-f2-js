@@ -3,7 +3,7 @@ title: "Pizzima"
 order: 61
 ---
 
-Le TP fil rouge des séances 6 à 8. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier, des commandes et un back-office.
+Le TP fil rouge des séances 6 à 8. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier et des commandes.
 
 ## Le cahier des charges
 
@@ -41,15 +41,29 @@ cd frontend && npm install && npm run dev
 
 Le `README.md` du starter décrit chaque fichier et explique les deux ou trois pièges (le proxy, l'extension `.js` dans les imports).
 
-## Les étapes
+## Le calendrier
 
-Chacune se termine par un point de contrôle : si vous le passez, vous pouvez enchaîner sereinement.
+| Quand | Ce qu'on fait |
+| --- | --- |
+| **Mardi 10/11** — séance 6 | [Étape 1 — L'API répond](/practices/pizzima-1/) · lire les données, une pizza par son id<br>[Étape 2 — Le CRUD complet](/practices/pizzima-2/) · créer, modifier, supprimer, valider |
+| **Mardi 17/11** — séances 7 et 8, d'affilée | [Étape 3 — Le catalogue en React](/practices/pizzima-3/) · composants, props, état<br>[Étape 4 — Le panier et la commande](/practices/pizzima-4/) · état partagé, POST vers l'API |
+| **Mardi 24/11** — séance 9 | Partiel |
 
-1. [Étape 1 — L'API répond](/practices/pizzima-1/) · lire les données, une pizza par son id
-2. [Étape 2 — Le CRUD complet](/practices/pizzima-2/) · créer, modifier, supprimer, valider
-3. [Étape 3 — Le catalogue en React](/practices/pizzima-3/) · composants, props, état
-4. [Étape 4 — Le panier et la commande](/practices/pizzima-4/) · état partagé, POST vers l'API
-5. [Étape 5 — L'espace BDE](/practices/pizzima-5/) · le back-office, et les finitions
+Chaque étape se termine par un point de contrôle : si vous le passez, vous
+pouvez enchaîner sereinement. Le corrigé d'une étape est publié le lendemain
+de la séance — si vous n'avez pas fini, vous pouvez repartir de là.
+
+La séance du 17/11 est double : les deux étapes du front s'enchaînent sans
+coupure d'une semaine. C'est la séance où l'application devient utilisable de
+bout en bout, du clic sur une pizza à la commande enregistrée.
+
+### 🎁 Pour aller plus loin
+
+[Étape 5 — L'espace BDE](/practices/pizzima-5/) · le back-office qui branche
+le CRUD de l'étape 2 sur une interface. Elle n'est **pas au programme des
+séances** : elle n'apporte pas de notion nouvelle, elle rebranche ce que vous
+saurez déjà faire. Elle est là pour qui veut couvrir tout le cahier des
+charges.
 
 ## Comment travailler
 

@@ -1,6 +1,7 @@
 ---
 title: "Pizzima — Étape 3 : le catalogue en React"
 order: 84
+correctionDate: 2026-11-18
 hidden: true
 ---
 
