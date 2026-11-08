@@ -3,13 +3,27 @@
 Le squelette du TP fil rouge. Tout le tooling est déjà réglé : vous écrivez des
 fonctionnalités, pas des fichiers de configuration.
 
+## Avant de démarrer
+
+**Node 22 LTS** (ou Node 20.19 au minimum — Vite 8 refuse de démarrer en
+dessous). Vérifiez :
+
+```
+node --version
+```
+
+Tout ce qui suit fonctionne à l'identique sous Windows, macOS et Linux, à une
+condition : **une commande par ligne**. Pas de `cd backend && npm install` —
+l'opérateur `&&` n'existe pas dans Windows PowerShell 5.1, celui qui s'ouvre
+par défaut sous Windows.
+
 ## Démarrer
 
 Il faut **deux terminaux**, un par serveur.
 
 **Terminal 1 — l'API :**
 
-```bash
+```
 cd backend
 npm install
 npm run dev
@@ -19,7 +33,7 @@ npm run dev
 
 **Terminal 2 — le site :**
 
-```bash
+```
 cd frontend
 npm install
 npm run dev
@@ -74,3 +88,15 @@ fichier **une fois compilé**. Votre éditeur vous le proposera automatiquement.
 
 **Les données.** `data/pizzas.json` est réécrit quand vous appelez
 `store.save(...)`. Si vous cassez le fichier, `git checkout` le remet en état.
+
+**Interroger l'API à la main.** Le plus simple, et le même sur tous les OS :
+la console du navigateur (`F12`) sur <http://localhost:5173>.
+
+```javascript
+await fetch("/api/pizzas").then((r) => r.json())
+```
+
+`curl`, Postman ou REST Client font aussi l'affaire. Sous Windows, dans
+PowerShell, écrivez `curl.exe` et non `curl` : `curl` y est un alias vers la
+cmdlet `Invoke-WebRequest`, qui ne comprend ni `-X`, ni `-H`, ni `-d`
+([doc Microsoft](https://learn.microsoft.com/en-us/windows/curl/)).

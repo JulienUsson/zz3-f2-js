@@ -26,15 +26,50 @@ Prenez dix minutes pour ouvrir ces quatre fichiers et répondre aux questions. C
 | `frontend/src/App.tsx`    | Quand l'appel à l'API est-il fait, et où le résultat est-il stocké ?  |
 | `frontend/vite.config.ts` | Pourquoi `/api/pizzas` arrive-t-il sur le port 8080 ?                 |
 
-## 3. Tester l'API sans le navigateur
+## 3. Interroger l'API à la main
 
-Une API se teste **seule**. Dans un troisième terminal :
+Une API se teste **seule**, sans passer par l'interface. L'outil le plus simple,
+et le seul qui soit identique sous Windows, macOS et Linux, vous l'avez déjà
+sous les yeux : la **console du navigateur**.
 
-```bash
+Ouvrez <http://localhost:5173>, puis la console (`F12`, onglet *Console*), et
+tapez :
+
+```javascript
+await fetch("/api/pizzas").then((r) => r.json())
+```
+
+La console affiche le tableau des six pizzas. C'est exactement ce que fait
+`App.tsx` — en une ligne. Deux variantes vous serviront tout au long du TP :
+
+```javascript
+// Le code de statut plutôt que le corps
+await fetch("/api/pizzas").then((r) => r.status)   // 200
+
+// Les deux à la fois
+await fetch("/api/pizzas").then(async (r) => [r.status, await r.json()])
+```
+
+> Le `/api/...` sans nom de domaine passe par le proxy de Vite, qui relaie vers
+> le port 8080. C'est la même URL que dans votre code : si ça marche ici, ça
+> marchera dans l'application.
+
+**Si vous préférez un vrai client HTTP**, [Postman](https://www.postman.com/),
+[Insomnia](https://insomnia.rest/) ou l'extension REST Client de VS Code font
+très bien l'affaire, et `curl` aussi :
+
+```
 curl http://localhost:8080/api/pizzas
 ```
 
-Vous pouvez aussi utiliser [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/) ou l'extension REST Client de VS Code — plus confortable dès qu'on envoie du JSON.
+⚠️ **Sous Windows, dans PowerShell, `curl` n'est pas curl.** Windows PowerShell
+5.1 définit un alias `curl` vers la cmdlet `Invoke-WebRequest`, qui ne comprend
+ni `-X`, ni `-H`, ni `-d`
+([doc Microsoft](https://learn.microsoft.com/en-us/windows/curl/)). Écrivez
+`curl.exe` — avec l'extension — pour appeler le vrai programme. Et le `\` de
+fin de ligne pour couper une commande en plusieurs lignes est une convention
+*bash* : PowerShell ne la connaît pas. D'où la console du navigateur, qui évite
+toute cette gymnastique.
 
 ## 4. Récupérer une pizza par son id
 
@@ -61,16 +96,21 @@ app.get("/api/pizzas/:id", (request, response) => {
 
 ### ✅ Point de contrôle
 
-```bash
-curl http://localhost:8080/api/pizzas/3
-# {"id":3,"name":"Quatre fromages", ...}
+Dans la console du navigateur, sur <http://localhost:5173> :
 
-curl -i http://localhost:8080/api/pizzas/999
-# HTTP/1.1 404 Not Found
+```javascript
+await fetch("/api/pizzas/3").then((r) => r.json())
+// {id: 3, name: "Quatre fromages", ...}
 
-curl -i http://localhost:8080/api/pizzas/abc
-# 404 aussi, et surtout pas un plantage du serveur
+await fetch("/api/pizzas/999").then((r) => r.status)
+// 404
+
+await fetch("/api/pizzas/abc").then((r) => r.status)
+// 404 aussi, et surtout pas un plantage du serveur
 ```
+
+Après le troisième appel, regardez le terminal de l'API : il doit toujours
+tourner, sans trace d'erreur.
 
 ## 🆘 Erreurs fréquentes
 
