@@ -70,25 +70,52 @@ Les codes de retour comptent — c'est le contrat de votre API :
 
 ### ✅ Point de contrôle
 
-```bash
-# Créer
-curl -X POST http://localhost:8080/api/pizzas \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Chorizo","description":"Tomate, mozzarella, chorizo","price":11,"image":"🌶️"}'
-# 201 + la pizza avec son id
+Dans la console du navigateur, sur <http://localhost:5173> (voir
+[l'étape 1](/practices/pizzima-1/) si vous avez oublié comment). Un petit
+raccourci à coller **une fois** par rechargement de page :
 
-# Refuser n'importe quoi
-curl -i -X POST http://localhost:8080/api/pizzas \
-  -H "Content-Type: application/json" -d '{"name":""}'
-# 400, et le serveur tourne toujours
-
-# Modifier, puis supprimer
-curl -i -X PUT http://localhost:8080/api/pizzas/7 \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Chorizo piquante","description":"Version qui pique","price":12,"image":"🌶️"}'
-curl -i -X DELETE http://localhost:8080/api/pizzas/7   # 204
-curl -i -X DELETE http://localhost:8080/api/pizzas/7   # 404 la deuxième fois
+```javascript
+const envoyer = (methode, url, corps) =>
+  fetch(url, {
+    method: methode,
+    headers: { "Content-Type": "application/json" },
+    body: corps && JSON.stringify(corps),
+  }).then(async (r) => [r.status, await r.text()]);
 ```
+
+Puis, une ligne à la fois :
+
+```javascript
+// Créer
+await envoyer("POST", "/api/pizzas", { name: "Chorizo", description: "Tomate, mozzarella, chorizo", price: 11, image: "🌶️" })
+// [201, '{"id":7,"name":"Chorizo",...}']
+
+// Refuser n'importe quoi
+await envoyer("POST", "/api/pizzas", { name: "" })
+// [400, ...] — et le serveur tourne toujours
+
+// Modifier
+await envoyer("PUT", "/api/pizzas/7", { name: "Chorizo piquante", description: "Version qui pique", price: 12, image: "🌶️" })
+// [200, ...]
+
+// Supprimer, deux fois
+await envoyer("DELETE", "/api/pizzas/7")   // [204, '']
+await envoyer("DELETE", "/api/pizzas/7")   // [404, ...] la deuxième fois
+```
+
+> `r.text()` plutôt que `r.json()` : un `204 No Content` n'a pas de corps, et
+> `r.json()` lèverait une erreur dessus. Le `7` est l'id renvoyé par la
+> création — adaptez-le si le vôtre diffère.
+
+Avec `curl` (macOS, Linux, ou Git Bash sous Windows), le même premier appel
+tient sur une ligne :
+
+```
+curl -i -X POST http://localhost:8080/api/pizzas -H "Content-Type: application/json" -d '{"name":"Chorizo","description":"Tomate, mozzarella, chorizo","price":11,"image":"🌶️"}'
+```
+
+⚠️ Dans PowerShell, écrivez `curl.exe` et pas `curl` — [l'étape
+1](/practices/pizzima-1/) explique pourquoi.
 
 Ouvrez `backend/data/pizzas.json` : vos modifications doivent y être. Redémarrez l'API, elles sont toujours là.
 

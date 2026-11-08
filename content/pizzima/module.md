@@ -22,24 +22,63 @@ En tant que membre du BDE, je peux :
 
 Le tooling (TypeScript, Vite, Express, le proxy) est déjà réglé, et une première fonctionnalité tourne de bout en bout. Vous partez donc d'une application qui marche, pas d'une page blanche.
 
-```bash
+**D'abord, Node.** Il faut **Node 22 LTS** (Node 20.19 ou plus récent fait
+l'affaire). Vérifiez :
+
+```
+node --version
+```
+
+Si la commande est inconnue ou affiche moins que `v20.19`, installez Node 22 LTS
+depuis [nodejs.org](https://nodejs.org/) avant d'aller plus loin. Vite 8 refuse
+de démarrer en dessous.
+
+**Ensuite, le starter.** Une commande par ligne, dans l'ordre :
+
+```
 npx degit JulienUsson/zz3-f2-js/pizzima-starter pizzima
 cd pizzima
 ```
 
-Puis, dans **deux terminaux séparés** :
+Puis, dans **deux terminaux séparés** — toujours une commande par ligne :
 
-```bash
-# Terminal 1
-cd backend && npm install && npm run dev
-
-# Terminal 2
-cd frontend && npm install && npm run dev
 ```
+# Terminal 1 — l'API
+cd backend
+npm install
+npm run dev
+```
+
+```
+# Terminal 2 — le site
+cd frontend
+npm install
+npm run dev
+```
+
+⚠️ **Ne collez pas `cd backend && npm install && npm run dev`.** Le `&&`
+n'existe pas dans Windows PowerShell 5.1, celui qui s'ouvre par défaut sous
+Windows ; il n'est arrivé qu'avec
+[PowerShell 7](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipeline_chain_operators).
+Une commande par ligne marche partout.
 
 ✅ **Vous êtes prêt quand** [http://localhost:5173](http://localhost:5173) affiche six pizzas.
 
 Le `README.md` du starter décrit chaque fichier et explique les deux ou trois pièges (le proxy, l'extension `.js` dans les imports).
+
+### 🆘 Si l'installation coince
+
+- **`npx degit` échoue** (réseau de l'école, proxy, antivirus) — récupérez
+  l'archive à la main : <https://github.com/JulienUsson/zz3-f2-js/archive/refs/heads/master.zip>,
+  dézippez-la, et gardez uniquement le dossier `pizzima-starter`, renommé `pizzima`.
+- **`npm install` s'arrête sur une erreur de version** — c'est Node. Relisez le
+  `node --version` ci-dessus.
+- **`EADDRINUSE: address already in use :::8080`** — un autre programme occupe
+  le port 8080. Fermez-le, ou changez le `PORT` dans `backend/src/server.ts`
+  (et le proxy dans `frontend/vite.config.ts`, qui pointe dessus).
+- **Les deux serveurs doivent tourner en même temps**, chacun dans son terminal.
+  Si vous fermez le terminal 1, le site affiche une liste vide.
+
 
 ## Le calendrier
 
@@ -74,6 +113,6 @@ charges.
 ## Comment travailler
 
 - **Versionnez.** `git init` dès l'étape 1, un commit par fonctionnalité. Vous pourrez revenir en arrière quand vous casserez quelque chose (ça arrivera).
-- **Un truc à la fois.** Faites marcher le backend avec `curl` ou Postman *avant* de toucher au React. Quand ça ne marche pas, vous saurez de quel côté chercher.
+- **Un truc à la fois.** Faites marcher le backend *avant* de toucher au React — la console du navigateur suffit pour l'interroger ([comment faire](/practices/pizzima-1/)). Quand ça ne marche pas, vous saurez de quel côté chercher.
 - **Lisez les erreurs.** Le terminal de l'API et la console du navigateur (F12) disent presque toujours ce qui ne va pas.
 - **Bloqué plus de 15 minutes ?** Appelez-moi. C'est le but d'être en salle.

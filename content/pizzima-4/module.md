@@ -50,16 +50,16 @@ Validez le corps comme à l'étape 2 : un `customer` non vide, au moins une lign
 
 ✅ **Point de contrôle intermédiaire :**
 
-```bash
-curl -X POST http://localhost:8080/api/orders \
-  -H "Content-Type: application/json" \
-  -d '{"customer":"Julien","lines":[{"pizzaId":1,"quantity":2},{"pizzaId":3,"quantity":1}]}'
-# 201, et total = 2 × 8.50 + 11.50 = 28.50
+Dans la console du navigateur, sur <http://localhost:5173>. Le raccourci
+`envoyer` de [l'étape 2](/practices/pizzima-2/) est à recoller : il disparaît à
+chaque rechargement de la page.
 
-curl -i -X POST http://localhost:8080/api/orders \
-  -H "Content-Type: application/json" \
-  -d '{"customer":"Julien","lines":[{"pizzaId":999,"quantity":1}]}'
-# 400 : la pizza n'existe pas
+```javascript
+await envoyer("POST", "/api/orders", { customer: "Julien", lines: [{ pizzaId: 1, quantity: 2 }, { pizzaId: 3, quantity: 1 }] })
+// [201, ...] et total = 2 × 8.50 + 11.50 = 28.50
+
+await envoyer("POST", "/api/orders", { customer: "Julien", lines: [{ pizzaId: 999, quantity: 1 }] })
+// [400, ...] : la pizza n'existe pas
 ```
 
 ## 2. Côté front : le panier
