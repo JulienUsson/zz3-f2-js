@@ -1,11 +1,10 @@
 ---
 title: "Pizzima — Étape 4 : le panier et la commande"
 order: 85
-correctionDate: 2026-11-11
 hidden: true
 ---
 
-**Séance 9.** Objectif : la première fonctionnalité qui traverse toute l'application. Le client compose un panier, l'envoie, et l'API l'enregistre.
+**Étape 4.** Objectif : la première fonctionnalité qui traverse toute l'application. Le client compose un panier, l'envoie, et l'API l'enregistre.
 
 C'est l'étape où votre projet devient une vraie application plutôt qu'un catalogue.
 

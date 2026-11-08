@@ -3,7 +3,7 @@ title: "Pizzima"
 order: 61
 ---
 
-Le TP fil rouge des séances 6 à 10. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier, des commandes et un back-office.
+Le TP fil rouge des séances 6 à 8. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier, des commandes et un back-office.
 
 ## Le cahier des charges
 
@@ -43,7 +43,7 @@ Le `README.md` du starter décrit chaque fichier et explique les deux ou trois p
 
 ## Les étapes
 
-Une étape par séance. Chacune se termine par un point de contrôle : si vous le passez, vous pouvez enchaîner sereinement.
+Chacune se termine par un point de contrôle : si vous le passez, vous pouvez enchaîner sereinement.
 
 1. [Étape 1 — L'API répond](/practices/pizzima-1/) · lire les données, une pizza par son id
 2. [Étape 2 — Le CRUD complet](/practices/pizzima-2/) · créer, modifier, supprimer, valider

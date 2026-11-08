@@ -14,7 +14,7 @@ defaults:
 
 # Présentation du cours
 
-10 séances de 2h.
+9 séances de 2h.
 
 | | |
 |---|---|
@@ -22,8 +22,8 @@ defaults:
 | **le reste** | on alterne : une notion, un exercice, une notion, un exercice… |
 
 - Séances **1 à 5** — chaque séance se suffit à elle-même
-- Séances **6 à 9** — fil rouge : une seule application, construite morceau par morceau
-- Séance **10** — partiel
+- Séances **6 à 8** — fil rouge : une seule application, construite morceau par morceau
+- Séance **9** — partiel
 
 ⚠️ **Prenez des notes !**
 

@@ -1,11 +1,10 @@
 ---
 title: "Pizzima — Étape 3 : le catalogue en React"
 order: 84
-correctionDate: 2026-11-04
 hidden: true
 ---
 
-**Séance 8.** Objectif : arrêter d'avoir toute la page dans `App.tsx`, et faire réagir l'interface aux clics.
+**Étape 3.** Objectif : arrêter d'avoir toute la page dans `App.tsx`, et faire réagir l'interface aux clics.
 
 L'API ne bouge plus. Tout se passe dans `frontend/src/`.
 
