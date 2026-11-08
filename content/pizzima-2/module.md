@@ -1,6 +1,7 @@
 ---
 title: "Pizzima — Étape 2 : le CRUD complet"
 order: 63
+correctionDate: 2026-11-11
 hidden: true
 ---
 
