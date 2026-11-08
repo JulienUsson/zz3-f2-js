@@ -1,7 +1,7 @@
 ---
 title: "Pizzima — Étape 1 : l'API répond"
 order: 62
-correctionDate: 2026-11-10
+correctionDate: 2026-11-11
 hidden: true
 ---
 
@@ -11,7 +11,9 @@ hidden: true
 
 ## 1. Faire tourner le starter
 
-Suivez [la page Pizzima](/practices/pizzima/) pour récupérer le projet et démarrer les deux serveurs. Ne passez pas à la suite tant que les six pizzas ne s'affichent pas.
+⏱️ **À faire avant la séance.** Suivez [la page Pizzima](/practices/pizzima/) pour récupérer le projet et démarrer les deux serveurs. Ne passez pas à la suite tant que les six pizzas ne s'affichent pas.
+
+Le programme des trois dernières séances est serré : si vous arrivez avec le starter qui tourne, on attaque directement le code. Si ça coince, écrivez-moi avant plutôt que d'y passer la première demi-heure du TP.
 
 ## 2. Lire le code qu'on vous donne
 

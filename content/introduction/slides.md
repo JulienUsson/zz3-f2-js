@@ -21,8 +21,8 @@ defaults:
 | **~5 min** | un quiz sur la séance précédente — non noté, on le fait ensemble |
 | **le reste** | on alterne : une notion, un exercice, une notion, un exercice… |
 
-- Séances **1 à 5** — chaque séance se suffit à elle-même
-- Séances **6 à 9** — fil rouge : une seule application, construite morceau par morceau
+- Séances **1 à 6** — chaque séance se suffit à elle-même
+- Séances **7 à 9** — fil rouge : une seule application, construite morceau par morceau
 - Séance **10** — partiel
 
 ⚠️ **Prenez des notes !**
