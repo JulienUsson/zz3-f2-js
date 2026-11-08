@@ -1,6 +1,7 @@
 ---
 title: "Pizzima — Étape 4 : le panier et la commande"
 order: 85
+correctionDate: 2026-11-11
 hidden: true
 ---
 

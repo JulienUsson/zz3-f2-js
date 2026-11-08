@@ -1,6 +1,7 @@
 ---
 title: "Pizzima — Étape 5 : l'espace BDE"
 order: 86
+correctionDate: 2026-11-18
 hidden: true
 ---
 
