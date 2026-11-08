@@ -5,7 +5,7 @@ correctionDate: 2026-11-11
 hidden: true
 ---
 
-**Étape 2.** Objectif : le BDE doit pouvoir gérer son référentiel de pizzas. Créer, modifier, supprimer — et refuser proprement les données invalides.
+**Étape 2**, enchaînée avec l'étape 1 dans la même séance. Objectif : le BDE doit pouvoir gérer son référentiel de pizzas. Créer, modifier, supprimer — et refuser proprement les données invalides.
 
 Tout se passe côté backend. Le front ne bouge pas encore.
 

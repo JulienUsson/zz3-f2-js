@@ -3,7 +3,7 @@ title: "Pizzima"
 order: 61
 ---
 
-Le TP fil rouge des séances 6 à 9. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier et des commandes.
+Le TP fil rouge des séances 7 à 9. À la fin, vous aurez **une vraie application web** : un site React qui parle à une API Express, avec un catalogue, un panier et des commandes.
 
 ## Le cahier des charges
 
@@ -45,10 +45,15 @@ Le `README.md` du starter décrit chaque fichier et explique les deux ou trois p
 
 | Quand | Ce qu'on fait |
 | --- | --- |
-| séance 6 — *faite* | [Étape 1 — L'API répond](/practices/pizzima-1/) · lire les données, une pizza par son id |
-| **Mardi 10/11** — séance 7 | [Étape 2 — Le CRUD complet](/practices/pizzima-2/) · créer, modifier, supprimer, valider |
+| **avant le 10/11**, chez vous | Récupérer le starter et le faire tourner (voir ci-dessous) |
+| **Mardi 10/11** — séance 7 | [Étape 1 — L'API répond](/practices/pizzima-1/) · lire les données, une pizza par son id<br>[Étape 2 — Le CRUD complet](/practices/pizzima-2/) · créer, modifier, supprimer, valider |
 | **Mardi 17/11** — séances 8 et 9, d'affilée | [Étape 3 — Le catalogue en React](/practices/pizzima-3/) · composants, props, état<br>[Étape 4 — Le panier et la commande](/practices/pizzima-4/) · état partagé, POST vers l'API |
 | **Mardi 24/11** — séance 10 | Partiel |
+
+⚠️ **L'installation se fait avant la séance du 10/11, pas pendant.** Le
+programme est serré : une demi-heure passée à installer Node et à attendre
+`npm install`, c'est une demi-heure en moins sur l'API. Si ça coince, venez
+me voir avant, ou écrivez-moi.
 
 Chaque étape se termine par un point de contrôle : si vous le passez, vous
 pouvez enchaîner sereinement. Le corrigé d'une étape est publié le lendemain
