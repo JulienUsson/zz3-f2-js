@@ -1,11 +1,10 @@
 ---
 title: "Pizzima — Étape 1 : l'API répond"
 order: 62
-correctionDate: 2026-10-21
 hidden: true
 ---
 
-**Séance 6.** Objectif : comprendre l'application qu'on vous donne, et lui ajouter votre première route.
+**Étape 1.** Objectif : comprendre l'application qu'on vous donne, et lui ajouter votre première route.
 
 À la fin de cette étape, votre API sait répondre « voici toutes les pizzas » **et** « voici la pizza n°3 ».
 

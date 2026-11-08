@@ -1,11 +1,10 @@
 ---
 title: "Pizzima — Étape 5 : l'espace BDE"
 order: 86
-correctionDate: 2026-11-18
 hidden: true
 ---
 
-**Séance 10.** Objectif : brancher le CRUD de l'étape 2 sur une interface, et rendre le projet présentable.
+**Étape 5.** Objectif : brancher le CRUD de l'étape 2 sur une interface, et rendre le projet présentable.
 
 À la fin de cette séance, le cahier des charges est couvert entièrement.
 

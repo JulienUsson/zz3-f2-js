@@ -1,11 +1,10 @@
 ---
 title: "Pizzima — Étape 2 : le CRUD complet"
 order: 63
-correctionDate: 2026-10-28
 hidden: true
 ---
 
-**Séance 7.** Objectif : le BDE doit pouvoir gérer son référentiel de pizzas. Créer, modifier, supprimer — et refuser proprement les données invalides.
+**Étape 2.** Objectif : le BDE doit pouvoir gérer son référentiel de pizzas. Créer, modifier, supprimer — et refuser proprement les données invalides.
 
 Tout se passe côté backend. Le front ne bouge pas encore.
 
