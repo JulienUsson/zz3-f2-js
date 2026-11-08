@@ -1,6 +1,7 @@
 ---
 title: "Pizzima — Étape 1 : l'API répond"
 order: 62
+correctionDate: 2026-10-21
 hidden: true
 ---
 

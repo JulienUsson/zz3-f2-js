@@ -16,6 +16,12 @@ type Props = CollectionEntry<"modules">;
 const module = Astro.props;
 const { Content } = await render(module);
 
+// Comme sur l'accueil : un corrigé n'est proposé que s'il existe et qu'il a
+// une date de publication. Les étapes du fil rouge sont `hidden`, donc
+// absentes de l'accueil : sans ce lien, leur corrigé serait introuvable.
+const corrections = new Set((await getCollection("corrections")).map((c) => c.id));
+const correction = corrections.has(module.id) && module.data.correctionDate != null;
+
 // Les exercices sont partagés avec les slides : `content/<module>/exercises/`.
 const exercises = (hasAnyExercise() ? await getCollection("exercises") : [])
   .filter((exercise) => exercise.id.startsWith(`${module.id}/`))
@@ -29,7 +35,11 @@ const renderedExercises = await Promise.all(
 );
 ---
 
-<Practice title={module.data.title}>
+<Practice
+  title={module.data.title}
+  correctionUrl={correction ? `/corrections/${module.id}/` : undefined}
+  correctionDate={module.data.correctionDate}
+>
   <Content />
   {
     renderedExercises.map(({ entry, Content: ExerciseContent }, index) => (
