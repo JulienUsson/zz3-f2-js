@@ -11,13 +11,11 @@ hidden: true
 
 ## 1. Faire tourner le starter
 
-⏱️ **À faire avant la séance.** Suivez [la page Pizzima](/practices/pizzima/) pour récupérer le projet et démarrer les deux serveurs. Ne passez pas à la suite tant que les six pizzas ne s'affichent pas.
-
-Le programme des trois dernières séances est serré : si vous arrivez avec le starter qui tourne, on attaque directement le code. Si ça coince, écrivez-moi avant plutôt que d'y passer la première demi-heure du TP.
+Suivez [la page Pizzima](/practices/pizzima/) pour récupérer le projet et démarrer les deux serveurs. Ne passez pas à la suite tant que les six pizzas ne s'affichent pas.
 
 ## 2. Lire le code qu'on vous donne
 
-Prenez dix minutes pour ouvrir ces quatre fichiers et répondre aux questions. C'est du temps gagné pour les quatre séances suivantes.
+Prenez dix minutes pour ouvrir ces quatre fichiers et répondre aux questions. C'est du temps gagné pour la suite du TP.
 
 | Fichier                   | Question à laquelle il répond                                        |
 | ------------------------- | -------------------------------------------------------------------- |

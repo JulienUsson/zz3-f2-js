@@ -20,10 +20,6 @@ En tant que membre du BDE, je peux :
 
 ## Récupérer le starter
 
-⚠️ **À faire chez vous, avant la séance** — pas pendant. Installer Node et
-attendre `npm install`, c'est autant de temps en moins sur le code. Si ça
-coince, écrivez-moi avant.
-
 Le tooling (TypeScript, Vite, Express, le proxy) est déjà réglé, et une première fonctionnalité tourne de bout en bout. Vous partez donc d'une application qui marche, pas d'une page blanche.
 
 **D'abord, Node.** Il faut **Node 22 LTS** (Node 20.19 ou plus récent fait
