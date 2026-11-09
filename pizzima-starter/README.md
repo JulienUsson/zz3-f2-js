@@ -13,9 +13,7 @@ node --version
 ```
 
 Tout ce qui suit fonctionne à l'identique sous Windows, macOS et Linux, à une
-condition : **une commande par ligne**. Pas de `cd backend && npm install` —
-l'opérateur `&&` n'existe pas dans Windows PowerShell 5.1, celui qui s'ouvre
-par défaut sous Windows.
+condition : **une commande par ligne**.
 
 ## Démarrer
 
