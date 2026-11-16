@@ -301,7 +301,7 @@ function App() {
 Les props permettent de **paramétrer un composant**.
 
 ```jsx
-interface ButtonProps {
+type ButtonProps = {
   label: string
 }
 
@@ -338,7 +338,7 @@ Un composant peut avoir un **état interne**.
 import { useState } from "react"
 
 function Counter() {
-  let [count, setCount] = useState(0)
+  const [count, setCount] = useState(0)
 
   return (
     <div>
@@ -363,7 +363,7 @@ function Counter() {
 
 ```jsx
 function App() {
-  let [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(false)
 
   return (
     <div>
@@ -398,8 +398,8 @@ function App() {
 
 ```jsx
 function App() {
-  let [todos, setTodos] = useState([])
-  let [value, setValue] = useState("")
+  const [todos, setTodos] = useState([])
+  const [value, setValue] = useState("")
 
   function addTodo() {
     if (!value) return
@@ -425,6 +425,123 @@ function App() {
 
 ---
 
+
+# Découper la Todo List
+
+```jsx
+type TodoItemProps = {
+  todo: string
+  onRemove: () => void
+}
+
+function TodoItem({ todo, onRemove }: TodoItemProps) {
+  return (
+    <li>
+      {todo}
+      <button onClick={onRemove}>✕</button>
+    </li>
+  )
+}
+```
+
+* `todo` est une **donnée**
+* `onRemove` est une **fonction**
+
+➡️ Une prop peut être n'importe quoi, y compris du code.
+
+---
+
+# Le parent garde l'état
+
+```jsx
+function App() {
+  const [todos, setTodos] = useState([])
+
+  function removeTodo(index) {
+    setTodos(todos.filter((_, i) => i !== index))
+  }
+
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <TodoItem
+          key={index}
+          todo={todo}
+          onRemove={() => removeTodo(index)}
+        />
+      ))}
+    </ul>
+  )
+}
+```
+
+---
+
+# Les données descendent, les événements remontent
+
+```
+              todo  ──────▶
+   App                          TodoItem
+              ◀──────  onRemove
+```
+
+* `TodoItem` **ne connaît pas** `setTodos`
+* il signale « on m'a cliqué », le parent décide quoi faire
+
+**Quand deux composants ont besoin du même état**, il vit chez leur
+**parent commun** — pas dupliqué dans chacun.
+
+➡️ C'est tout ce que veut dire *lifting state up*.
+
+---
+
+# Valeur dérivée : ce n'est pas un état
+
+```jsx
+// ❌ un état de plus à garder synchronisé
+const [count, setCount] = useState(0)
+useEffect(() => setCount(todos.length), [todos])
+
+// ✅ on le recalcule à chaque rendu
+const count = todos.length
+```
+
+**Si ça se calcule à partir d'un état, ce n'est pas un état.**
+
+* un `useState` de moins
+* impossible de se désynchroniser
+* le rendu est de toute façon refait quand `todos` change
+
+---
+
+# Hook personnalisé
+
+Un bloc `useState` + `useEffect` qu'on réécrit à chaque page se range dans une
+fonction :
+
+```jsx
+function useTodos() {
+  const [todos, setTodos] = useState([])
+
+  function addTodo(value) {
+    setTodos([...todos, value])
+  }
+
+  return { todos, addTodo }
+}
+
+function App() {
+  const { todos, addTodo } = useTodos()
+  // ...
+}
+```
+
+* nom qui commence par **`use`**
+* appelle des hooks React
+
+➡️ Il n'y a pas d'autre magie que ça.
+
+---
 
 # Effets de bord (side effects)
 
