@@ -59,7 +59,7 @@ A rajouter dans votre CV 😉
 
 # Notation
 
-Partiel de 2h à la **dernière séance**.
+Partiel de 1h à la **dernière séance**.
 
 **Sans documents**
 
